@@ -42,6 +42,7 @@ const AddArticles = () => {
       const articleItem = {
         publisherName: data.publisherName,
         status: data.status,
+        category: data.category,
         articleTitle: data.articleTitle,
         date: data.date,
         email: data.email,
@@ -202,6 +203,28 @@ const AddArticles = () => {
                   className="basic-multi-select"
                   classNamePrefix="select"
                 />
+              </div>
+              <div className="col-span-full sm:col-span-3">
+                <label className="text-sm">News Category</label>
+
+                <select
+                  className="w-full rounded-md focus:ring focus:ri focus:ri bg-slate-300 border-gray-700 text-slate-950"
+                  name="category"
+                  {...register("category")}
+                  defaultValue={``}
+                >
+                  <option selected>Select</option>
+                  <option>World News</option>
+                  <option>Around The Bangladesh</option>
+                  <option>Political News</option>z<option>Sports News</option>
+                  <option>Entertainment News</option>
+                  <option>Health and Life Style</option>
+                  <option>Travel</option>
+                  <option>Scince and Technology</option>
+                  <option>Education</option>
+                  <option>Business News</option>
+                  <option>Editor's Column</option>
+                </select>
               </div>
               <div id="fileUpload" className="col-span-full text-gray-900">
                 <div className="mb-2 block text-gray-900">

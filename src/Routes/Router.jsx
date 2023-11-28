@@ -12,6 +12,8 @@ import AddArticles from "../pages/AddArticles";
 import PrivateRoutes from "./PrivateRoutes";
 import AllArticles from "../pages/dashboard/AllArticles";
 import MyArticles from "../pages/MyArticles";
+import ApprovedArticles from "../pages/ApprovedArticles";
+import Details from "../pages/Details";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +33,10 @@ export const router = createBrowserRouter([
         element: <SignUp></SignUp>,
       },
       {
+        path: "/signup",
+        element: <SignUp></SignUp>,
+      },
+      {
         path: "/add-articles",
         element: (
           <PrivateRoutes>
@@ -39,14 +45,17 @@ export const router = createBrowserRouter([
         ),
         loader: () => fetch(`http://localhost:5000/publisher`),
       },
+
       {
-        path: "/my-articles",
-        element: (
-          <PrivateRoutes>
-            <MyArticles></MyArticles>
-          </PrivateRoutes>
-        ),
-        loader: () => fetch(`http://localhost:5000/article`),
+        path: "/approved-articles",
+        element: <ApprovedArticles></ApprovedArticles>,
+        // loader: () => fetch(`http://localhost:5000/article`),
+      },
+      {
+        path: "/details-news/:id",
+        element: <Details></Details>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/article/${params.id}`),
       },
     ],
   },

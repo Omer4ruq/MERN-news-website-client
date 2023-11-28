@@ -70,7 +70,10 @@ const Navbar = () => {
               <h2 className="hidden md:block text-white">Add Articles</h2>
             </div>
           </NavLink>
-          <NavLink className="hover:underline underline-offset-8" to="/">
+          <NavLink
+            className="hover:underline underline-offset-8"
+            to="/approved-articles"
+          >
             <div className="flex ">
               <h2 className="hidden md:block text-white">All Articles</h2>
             </div>
@@ -104,17 +107,26 @@ const Navbar = () => {
               <h2 className="hidden md:block text-white">Home</h2>
             </div>
           </NavLink>
-          <NavLink className="hover:underline underline-offset-8" to="/">
+          <NavLink
+            className="hover:underline underline-offset-8"
+            to="/add-articles"
+          >
             <div className="flex ">
               <h2 className="hidden md:block text-white">Add Articles</h2>
             </div>
           </NavLink>
-          <NavLink className="hover:underline underline-offset-8" to="/">
+          <NavLink
+            className="hover:underline underline-offset-8"
+            to="/approved-articles"
+          >
             <div className="flex ">
               <h2 className="hidden md:block text-white">All Articles</h2>
             </div>
           </NavLink>{" "}
-          <NavLink className="hover:underline underline-offset-8" to="/">
+          <NavLink
+            className="hover:underline underline-offset-8"
+            to="/my-articles"
+          >
             <div className="flex gap-2">
               <h2 className="hidden md:block text-white">My Articals</h2>
             </div>
