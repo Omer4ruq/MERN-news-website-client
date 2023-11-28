@@ -83,7 +83,10 @@ const Navbar = () => {
               <h2 className="hidden md:block text-white">Dashboard</h2>
             </div>
           </NavLink>{" "}
-          <NavLink className="hover:underline underline-offset-8" to="/">
+          <NavLink
+            className="hover:underline underline-offset-8"
+            to="/my-articles"
+          >
             <div className="flex gap-2">
               <h2 className="hidden md:block text-white">My Articals</h2>
             </div>

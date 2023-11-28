@@ -11,6 +11,7 @@ import AddPublisher from "../pages/dashboard/AddPublisher";
 import AddArticles from "../pages/AddArticles";
 import PrivateRoutes from "./PrivateRoutes";
 import AllArticles from "../pages/dashboard/AllArticles";
+import MyArticles from "../pages/MyArticles";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +38,15 @@ export const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: () => fetch(`http://localhost:5000/publisher`),
+      },
+      {
+        path: "/my-articles",
+        element: (
+          <PrivateRoutes>
+            <MyArticles></MyArticles>
+          </PrivateRoutes>
+        ),
+        loader: () => fetch(`http://localhost:5000/article`),
       },
     ],
   },
