@@ -17,6 +17,7 @@ const SocialLogin = () => {
         const userInfo = {
           emai: result.user?.email,
           name: result.user?.displayName,
+          photoURL: result.user?.photoURL,
         };
         axiosPublic.post("/users", userInfo).then((res) => {
           // if (res.data.insertedId) {

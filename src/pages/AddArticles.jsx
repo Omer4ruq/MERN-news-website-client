@@ -51,6 +51,7 @@ const AddArticles = () => {
         tags: data.tags,
         description: data.description,
         image: res.data.data.display_url,
+        views: 0,
       };
       const articleRes = await axiosSecure.post("/article", articleItem);
       console.log(articleRes.data);

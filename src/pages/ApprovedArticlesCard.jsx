@@ -1,7 +1,10 @@
 import { Card } from "flowbite-react";
 import React from "react";
+import { NavLink } from "react-router-dom";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ApprovedArticlesCard = ({ article }) => {
+  const axiosSecure = useAxiosSecure();
   const {
     articleTitle,
     image,
@@ -11,7 +14,16 @@ const ApprovedArticlesCard = ({ article }) => {
     name,
     description,
     authorImage,
+    _id,
+    views,
   } = article;
+  const handleDetails = async () => {
+    const menuItem = {
+      views: views + 1,
+    };
+    const menuRes = await axiosSecure.patch(`/articleViews/${_id}`, menuItem);
+    console.log(menuItem);
+  };
   return (
     <div>
       <Card className=" hover:scale-90 transition-all duration-300 ease-in-out cursor-pointer">
@@ -32,6 +44,11 @@ const ApprovedArticlesCard = ({ article }) => {
             <div className="mt-4 text-xs"> {name}</div>
           </div>
         </p>
+        <NavLink to={`/details-news/${_id}`}>
+          <button className="bg-slate-600" onClick={handleDetails}>
+            Details
+          </button>
+        </NavLink>
       </Card>
     </div>
   );

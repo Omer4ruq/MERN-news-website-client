@@ -6,10 +6,12 @@ import { AuthContext } from "../providers/AuthProviders";
 ("use client");
 
 import { Avatar, Dropdown } from "flowbite-react";
+import useAdmin from "../hooks/useAdmin";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  const isAdmin = true;
+  // const isAdmin = true;
+  const [isAdmin] = useAdmin();
   const handleSignOut = () => {
     logOut().then().catch();
   };

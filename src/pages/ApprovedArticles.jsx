@@ -4,9 +4,15 @@ import { Card } from "flowbite-react";
 import ApprovedArticlesCard from "./ApprovedArticlesCard";
 import PageTitle from "../components/PageTitle";
 import { FaSearch } from "react-icons/fa";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const ApprovedArticles = () => {
   const [article, , refetch] = useArticles();
+  const axiosPublic = useAxiosPublic();
+  const handleSearch = async (e) => {
+    const menuRes = await axiosPublic.post(`/article/search`, { e });
+    console.log(menuRes);
+  };
   return (
     // <div>
     //   {
@@ -39,7 +45,7 @@ const ApprovedArticles = () => {
               className="bg-transparent border-none w-4 sm:w-64"
               // value={searchTerm}
               // onChange={(e) => setSearchTerm(e.target.value)}
-              //   onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => handleSearch(e.target.value)}
             />
             <FaSearch className="text-slate-600"></FaSearch>
           </form>
