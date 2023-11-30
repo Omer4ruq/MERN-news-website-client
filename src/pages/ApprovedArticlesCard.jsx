@@ -18,6 +18,7 @@ const ApprovedArticlesCard = ({ article }) => {
     views,
     status,
     premium,
+    publisherName,
   } = article;
   const handleDetails = async () => {
     const menuItem = {
@@ -44,7 +45,7 @@ const ApprovedArticlesCard = ({ article }) => {
           "
             >
               {/* <FaTag className="w-8"></FaTag> */}
-              <div className="mt-4 text-xs"> {name}</div>
+              <div className="mt-4 text-xs text-white"> {publisherName}</div>
             </div>
           </p>
           <NavLink to={`/subscribtion`}>
@@ -70,7 +71,7 @@ const ApprovedArticlesCard = ({ article }) => {
         "
               >
                 {/* <FaTag className="w-8"></FaTag> */}
-                <div className="mt-4 text-xs"> {name}</div>
+                <div className="mt-4 text-xs"> {publisherName}</div>
               </div>
             </p>
             <NavLink to={`/details-news/${_id}`}>
