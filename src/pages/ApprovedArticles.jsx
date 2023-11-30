@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import useArticles from "../hooks/useArticles";
 import { Card } from "flowbite-react";
 import ApprovedArticlesCard from "./ApprovedArticlesCard";
@@ -8,10 +8,18 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const ApprovedArticles = () => {
   const [article, , refetch] = useArticles();
+
+  const [search, setSearch] = useState("");
+
   const axiosPublic = useAxiosPublic();
-  const handleSearch = async (e) => {
-    const menuRes = await axiosPublic.post(`/article/search`, { e });
-    console.log(menuRes);
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const searchText = e.target.search.value;
+    const searchRes = axiosPublic.get(`/articleSearch/?search=${searchText}`, {
+      searchText,
+    });
+    console.log(searchRes);
+    setSearch(searchRes);
   };
   return (
     // <div>
@@ -38,16 +46,23 @@ const ApprovedArticles = () => {
         </div>
 
         <div>
-          <form className="bg-slate-100  mt-20 rounded-lg flex items-center ">
+          <form
+            onSubmit={handleSearch}
+            className="bg-slate-100  mt-20 rounded-lg flex items-center "
+          >
             <input
               type="text"
-              placeholder="Search Services"
+              name="search"
+              placeholder="Search Articles"
               className="bg-transparent border-none w-4 sm:w-64"
               // value={searchTerm}
               // onChange={(e) => setSearchTerm(e.target.value)}
-              onChange={(e) => handleSearch(e.target.value)}
+              // onChange={(e) => handleSearch(e.target.value)}
             />
-            <FaSearch className="text-slate-600"></FaSearch>
+            <button type="submit" value={"search"}>
+              {" "}
+              <FaSearch className="text-slate-600"></FaSearch>
+            </button>
           </form>
         </div>
       </div>
