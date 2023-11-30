@@ -12,6 +12,7 @@ const Details = () => {
     name,
     description,
     authorImage,
+    publisherName,
     _id,
   } = article;
   return (
@@ -32,7 +33,7 @@ const Details = () => {
               <h3 className="text-2xl font-semibold sm:text-4xl group-hover:underline group-focus:underline">
                 {articleTitle}
               </h3>
-              <span className="text-xs text-gray-400">February 19, 2021</span>
+              <span className="text-xs text-gray-400">{publisherName}</span>
               <p>{description}</p>
             </div>
           </a>
