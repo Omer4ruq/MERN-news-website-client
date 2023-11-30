@@ -26,6 +26,9 @@ const Dashboard = () => {
                 <li>
                   <NavLink to="article">All Articles</NavLink>
                 </li>
+                <li>
+                  <NavLink to="/">Home</NavLink>
+                </li>
               </ul>
             </div>
           </nav>

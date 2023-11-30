@@ -10,7 +10,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { MdLastPage } from "react-icons/md";
 const getArticles = async ({ pageParam = 0 }) => {
   const res = await fetch(
-    `https://newspaper-server-zeta.vercel.app/article?limit=10&offset=${pageParam}`
+    `https://newspaper-server-zeta.vercel.app/article?offset=${pageParam}`
   );
   const data = await res.json();
   return { ...data, prevOffset: pageParam };

@@ -21,21 +21,32 @@ const Navbar = () => {
         <img src={logo} className="h-10" alt="" />
         {user ? (
           <div className="flex text-white">
-            <div>
-              <Dropdown
-                arrowIcon={false}
-                inline
-                label={
-                  <Avatar alt="User settings" img={user.photoURL} rounded />
-                }
-              >
-                <Dropdown.Header>
+            <div className="flex gap-4">
+              <NavLink to="/my-profile">
+                {" "}
+                <Dropdown
+                  arrowIcon={false}
+                  inline
+                  label={
+                    <Avatar alt="User settings" img={user.photoURL} rounded />
+                  }
+                >
+                  {" "}
+                </Dropdown>
+              </NavLink>
+              <button>
+                <h1 onClick={handleSignOut} className="text-sm font-semibold">
+                  Sign Out
+                </h1>
+              </button>
+
+              {/* <Dropdown.Header>
                   <span className="block text-sm">{user.displayName}</span>
                   <span className="block truncate text-sm font-medium">
                     {user.email}
                   </span>
-                </Dropdown.Header>
-                <NavLink to="/dashboard/news">
+                </Dropdown.Header> */}
+              {/* <NavLink to="/dashboard/news">
                   {" "}
                   <Dropdown.Item>Dashboard</Dropdown.Item>
                 </NavLink>
@@ -43,8 +54,7 @@ const Navbar = () => {
                 <Dropdown.Item>Settings</Dropdown.Item>
                 <Dropdown.Item>Earnings</Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item onClick={handleSignOut}>Sign out</Dropdown.Item>
-              </Dropdown>
+                <Dropdown.Item onClick={handleSignOut}>Sign out</Dropdown.Item> */}
             </div>
           </div>
         ) : (

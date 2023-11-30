@@ -16,6 +16,7 @@ import ApprovedArticles from "../pages/ApprovedArticles";
 import Details from "../pages/Details";
 import Payment from "../pages/payment/Payment";
 import Subscribtion from "../pages/Subscribtion";
+import MyProfile from "../pages/MyProfile";
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
       {
         path: "/subscribtion",
         element: <Subscribtion></Subscribtion>,
+      },
+      {
+        path: "/my-profile",
+        element: <MyProfile></MyProfile>,
       },
       {
         path: "/add-articles",
