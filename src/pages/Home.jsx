@@ -8,6 +8,7 @@ import { Button, Modal } from "flowbite-react";
 
 import { Toast } from "flowbite-react";
 import { MdLoop } from "react-icons/md";
+import AllPublishers from "../components/AllPublishers";
 const Home = () => {
   const [openModal, setOpenModal] = useState(false);
   useEffect(() => {
@@ -95,9 +96,12 @@ const Home = () => {
         {" "}
         <PopulerArticles></PopulerArticles>
       </div>
-      <div>
+      <div className="mb-8">
         {" "}
         <AnnounceSection></AnnounceSection>
+      </div>
+      <div className="mb-8">
+        <AllPublishers></AllPublishers>
       </div>
     </div>
   );
