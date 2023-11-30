@@ -112,7 +112,7 @@ const Home = () => {
       <div className="mb-8">
         <PoliticalNews></PoliticalNews>
       </div>
-      <div>
+      <div className="mb-8">
         <MemberShipCard></MemberShipCard>
       </div>
     </div>
