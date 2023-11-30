@@ -68,9 +68,7 @@ const MyArticles = () => {
                       <th scope="col" className="">
                         Status
                       </th>
-                      <th scope="col" className="">
-                        Premium
-                      </th>
+
                       <th scope="col" className="">
                         Update
                       </th>
