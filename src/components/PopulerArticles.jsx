@@ -11,12 +11,14 @@ const PopulerArticles = () => {
   }
   const populer = article.sort(compareByView);
   console.log(populer);
+
   const [sliderRef] = useKeenSlider({
     loop: true,
     mode: "free",
-    slides: {
-      perView: 4,
-      spacing: 1,
+    slides: { origin: "center", perView: 2.5, spacing: 10 },
+    range: {
+      min: -5,
+      max: 5,
     },
   });
 
