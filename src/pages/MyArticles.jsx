@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import useArticles from "../hooks/useArticles";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { axiosSecure } from "../hooks/useAxiosSecure";
+import { AuthContext } from "../providers/AuthProviders";
 
 const MyArticles = () => {
-  const [article, , refetch] = useArticles();
+  const { user } = useContext(AuthContext);
+  // const [article, , refetch] = useArticles();
+  const [article, setArticle] = useState([]);
+  const url = `http://localhost:5000/my-article?email=${user?.email}`;
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setArticle(data));
+  }, []);
   const handleDeleteItem = (article) => {
     Swal.fire({
       title: "Are you sure?",
@@ -21,7 +30,7 @@ const MyArticles = () => {
         // console.log(res.data);
         if (res.data.deletedCount > 0) {
           // refetch to update the ui
-          refetch();
+          // refetch();
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -58,6 +67,9 @@ const MyArticles = () => {
                       </th>
                       <th scope="col" className="">
                         Status
+                      </th>
+                      <th scope="col" className="">
+                        Premium
                       </th>
                       <th scope="col" className="">
                         Update

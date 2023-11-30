@@ -19,16 +19,31 @@ const PopulerArticles = () => {
       spacing: 1,
     },
   });
+
+  const numberOfItemsToRender = 6;
+  const limitedItems = populer.slice(0, numberOfItemsToRender);
   return (
     <div>
+      {/* <div className="flex border-red-700  border-l-4 border-t-0 border-r-0 border-b-0"> */}
+      <div className="flex">
+        <h1 className="text-2xl font-semibold text-red-600">I</h1>
+        <h1 className="mb-2 ml-2 text-2xl font-semibold text-start pt-0 ">
+          Trending News
+        </h1>
+      </div>
       <div ref={sliderRef} className="keen-slider">
-        {populer.map((populer) => (
+        {limitedItems.map((populer) => (
           <div key={populer._id}>
             <div className="keen-slider__slide number-slide1 relative">
-              <img className="w-80 h-48" src={populer.image} />
-              <h1 className=" text-4xl text-center text-white -mt-10">
-                {populer.articleTitle}
-              </h1>
+              <img
+                className="w-96 h-48 bg-gradient-to-b from-black to-transparent"
+                src={populer.image}
+              />
+              <div className="">
+                <h1 className="absolute text-x font-semibold text-center  text-white -mt-20">
+                  {populer.articleTitle}
+                </h1>
+              </div>
             </div>
           </div>
         ))}

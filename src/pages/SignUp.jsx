@@ -69,6 +69,7 @@ const SignUp = () => {
             displayName: displayName,
             email: email,
             photoURL: photoURL,
+            premiumTaken: null,
           };
           axiosPublic.post("/users", userInfo).then((res) => {
             if (res.data.insertedId) {

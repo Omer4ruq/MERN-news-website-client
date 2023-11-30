@@ -7,7 +7,7 @@ import { useState } from "react";
 import { Table, Column, HeaderCell, Cell } from "rsuite-table";
 import useArticles from "../../hooks/useArticles";
 import Swal from "sweetalert2";
-import { FaTrash } from "react-icons/fa";
+import { FaCheck, FaSign, FaTrash } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 
 const AllArticles = () => {
@@ -73,6 +73,31 @@ const AllArticles = () => {
     };
     const menuRes = await axiosSecure.patch(
       `/article/${article._id}`,
+      menuItem
+    );
+    console.log(menuRes.data);
+    if (menuRes.data.modifiedCount > 0) {
+      // show success popup
+      // reset();
+      refetch();
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: `${article.name} is updated to the menu.`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  };
+
+  const handlePremium = async (article) => {
+    article.premium = "premium";
+
+    const menuItem = {
+      premium: article.premium,
+    };
+    const menuRes = await axiosSecure.patch(
+      `/articlepremium/${article._id}`,
       menuItem
     );
     console.log(menuRes.data);
@@ -287,7 +312,19 @@ const AllArticles = () => {
                               className="ml-4 text-2xl  text-red-600"
                             ></FaTrash>
                           </td>
-                          <td className="whitespace-nowrap ">Premium</td>
+                          <td className="whitespace-nowrap ">
+                            {article.premium === "premium" ? (
+                              <FaCheck className="ml-5"></FaCheck>
+                            ) : (
+                              <button
+                                onClick={() => handlePremium(article)}
+                                type="button"
+                                className="w-20 font-semibold rounded bg-gray-500 text-gray-50"
+                              >
+                                Premium
+                              </button>
+                            )}
+                          </td>
                         </tr>
                       </tbody>
                     ))}

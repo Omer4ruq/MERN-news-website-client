@@ -52,6 +52,7 @@ const AddArticles = () => {
         description: data.description,
         image: res.data.data.display_url,
         views: 0,
+        premium: null,
       };
       const articleRes = await axiosSecure.post("/article", articleItem);
       console.log(articleRes.data);
@@ -195,15 +196,28 @@ const AddArticles = () => {
                 />
               </div>
               <div>
-                <label className="text-sm">Tags</label>
-                <Select
+                <label className="text-sm ">Tags</label>
+                <select
                   {...register("tags")}
-                  isMulti
                   name="tags"
+                  className="text-gray-900"
+                >
+                  <option value="sports">sports</option>
+                  <option value="war">war</option>
+                  <option value="health">health</option>
+                  <option value="politics">politics</option>
+                  <option value="education">education</option>
+                  <option value="travle">travle</option>
+                  <option value="scince">scince</option>
+                  <option value="bd">bd</option>
+                </select>
+                {/* <Select
+                  {...register("tags")}
+                  name="tags"
+                  defaultValue={selectedOption}
+                  onChange={setSelectedOption}
                   options={options}
-                  className="basic-multi-select"
-                  classNamePrefix="select"
-                />
+                /> */}
               </div>
               <div className="col-span-full sm:col-span-3">
                 <label className="text-sm">News Category</label>

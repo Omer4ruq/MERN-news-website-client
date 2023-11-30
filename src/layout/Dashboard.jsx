@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
+import { Chart } from "react-google-charts";
+import StatsChart from "../pages/dashboard/StatsChart";
 
 const Dashboard = () => {
   // const isAdmin = true;
@@ -28,6 +30,7 @@ const Dashboard = () => {
             </div>
           </nav>
         </aside>
+        <div>{/* <StatsChart></StatsChart> */}</div>
         <div className="flex-1 p-10 ml-16">
           <Outlet></Outlet>
         </div>

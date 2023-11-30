@@ -101,6 +101,14 @@ const Navbar = () => {
               <h2 className="hidden md:block text-white">Premium Articles</h2>
             </div>
           </NavLink>
+          <NavLink
+            className="hover:underline underline-offset-8"
+            to="/subscribtion"
+          >
+            <div className="flex gap-2">
+              <h2 className="hidden md:block text-white">Subscribtion</h2>
+            </div>
+          </NavLink>
         </div>
       ) : (
         <div className=" vertical-align: middle; text-white flex  items-center gap-2 md:gap-8 text-[10px] md:text-[15px] font-normal cursor-pointer  ml-2 md:ml-16">
@@ -136,6 +144,14 @@ const Navbar = () => {
           <NavLink className="hover:underline underline-offset-8" to="/">
             <div className="flex gap-2">
               <h2 className="hidden md:block text-white">Premium Articles</h2>
+            </div>
+          </NavLink>
+          <NavLink
+            className="hover:underline underline-offset-8"
+            to="/subscribtion"
+          >
+            <div className="flex gap-2">
+              <h2 className="hidden md:block text-white">Subscribtion</h2>
             </div>
           </NavLink>
         </div>

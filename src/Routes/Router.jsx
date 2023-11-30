@@ -14,6 +14,8 @@ import AllArticles from "../pages/dashboard/AllArticles";
 import MyArticles from "../pages/MyArticles";
 import ApprovedArticles from "../pages/ApprovedArticles";
 import Details from "../pages/Details";
+import Payment from "../pages/payment/Payment";
+import Subscribtion from "../pages/Subscribtion";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +37,18 @@ export const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp></SignUp>,
+      },
+      {
+        path: "/payment",
+        element: <Payment></Payment>,
+      },
+      {
+        path: "/my-articles",
+        element: <MyArticles></MyArticles>,
+      },
+      {
+        path: "/subscribtion",
+        element: <Subscribtion></Subscribtion>,
       },
       {
         path: "/add-articles",
