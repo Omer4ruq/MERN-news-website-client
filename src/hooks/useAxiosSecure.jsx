@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProviders";
 
 export const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://newspaper-server-zeta.vercel.app",
 });
 const useAxiosSecure = () => {
   const navigate = useNavigate();

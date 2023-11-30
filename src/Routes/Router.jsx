@@ -57,19 +57,22 @@ export const router = createBrowserRouter([
             <AddArticles></AddArticles>
           </PrivateRoutes>
         ),
-        loader: () => fetch(`http://localhost:5000/publisher`),
+        loader: () =>
+          fetch(`https://newspaper-server-zeta.vercel.app/publisher`),
       },
 
       {
         path: "/approved-articles",
         element: <ApprovedArticles></ApprovedArticles>,
-        // loader: () => fetch(`http://localhost:5000/article`),
+        // loader: () => fetch(`https://newspaper-server-zeta.vercel.app/article`),
       },
       {
         path: "details-news/:id",
         element: <Details></Details>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/article/${params.id}`),
+          fetch(
+            `https://newspaper-server-zeta.vercel.app/article/${params.id}`
+          ),
       },
     ],
   },

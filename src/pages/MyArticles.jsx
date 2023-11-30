@@ -9,7 +9,7 @@ const MyArticles = () => {
   const { user } = useContext(AuthContext);
   // const [article, , refetch] = useArticles();
   const [article, setArticle] = useState([]);
-  const url = `http://localhost:5000/my-article?email=${user?.email}`;
+  const url = `https://newspaper-server-zeta.vercel.app/my-article?email=${user?.email}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())

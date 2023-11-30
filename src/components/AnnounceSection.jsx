@@ -17,12 +17,14 @@ const AnnounceSection = () => {
           <img
             src="https://i.ibb.co/ggBd4yn/p0gw59r6.jpg"
             alt="Your Image"
-            className="ml-[480px] w-auto h-96  "
+            className="ml-[600px] w-auto h-96  "
           />
 
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-l from-transparent via-red-600  to-red-600 "></div>
-          <div className="absolute top-1/2 left-1/12 transform -translate-y-1/2 text-white text-4xl font-bold z-10">
-            Nigella’s Amsterdam Christmas
+          <div className="absolute top-1/2 left-1/12 transform -translate-y-1/2  font-bold z-10">
+            <h3 className="text-2xl font-semibold sm:text-4xl hover:underline group-focus:underline">
+              Nigella’s Amsterdam Christmas
+            </h3>
           </div>
         </div>
       </div>

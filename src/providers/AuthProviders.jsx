@@ -62,7 +62,7 @@ const AuthProvider = ({ children }) => {
   //     setLoading(false);
   //     if (currentUser) {
   //       axios
-  //         .post("http://localhost:5000/jwt", loggedUser, {
+  //         .post("https://newspaper-server-zeta.vercel.app/jwt", loggedUser, {
   //           withCredentials: true,
   //         })
   //         .then((res) => {
@@ -71,7 +71,7 @@ const AuthProvider = ({ children }) => {
   //     } else {
   //       axios
   //         .post(
-  //           "http://localhost:5000/logout",
+  //           "https://newspaper-server-zeta.vercel.app/logout",
   //           loggedUser,
   //           {
   //             withCredentials: true,

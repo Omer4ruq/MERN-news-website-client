@@ -210,6 +210,7 @@ const AddArticles = () => {
                   <option value="travle">travle</option>
                   <option value="scince">scince</option>
                   <option value="bd">bd</option>
+                  <option value="Entertainment">Entertainment</option>
                 </select>
                 {/* <Select
                   {...register("tags")}
@@ -219,7 +220,7 @@ const AddArticles = () => {
                   options={options}
                 /> */}
               </div>
-              <div className="col-span-full sm:col-span-3">
+              <div className="col-span-full sm:col-span-3 ml-8">
                 <label className="text-sm">News Category</label>
 
                 <select
