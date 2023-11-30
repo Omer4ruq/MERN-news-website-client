@@ -2,6 +2,7 @@ import React from "react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
+import { NavLink } from "react-router-dom";
 
 const SportsNewsCard = ({ article }) => {
   const axiosSecure = useAxiosSecure();
@@ -50,6 +51,13 @@ const SportsNewsCard = ({ article }) => {
 
   //   const numberOfItemsToRender = 4;
   //   const limitedItems = article.slice(0, numberOfItemsToRender);
+  const handleDetails = async () => {
+    const menuItem = {
+      views: views + 1,
+    };
+    const menuRes = await axiosSecure.patch(`/articleViews/${_id}`, menuItem);
+    console.log(menuItem);
+  };
   return (
     <div>
       <div>
@@ -64,6 +72,15 @@ const SportsNewsCard = ({ article }) => {
                 {articleTitle}
               </h1>
             </div>
+            <NavLink to={`/details-news/${_id}`}>
+              <button
+                className="bg-blue-500 -ml-12
+         hover:bg-blue-700 text-white font-bold py-2 px-4 rounded h-10 w-72 mt-1 ml-28"
+                onClick={handleDetails}
+              >
+                Details
+              </button>
+            </NavLink>
           </div>
         </div>
 
