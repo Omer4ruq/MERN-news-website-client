@@ -19,6 +19,16 @@ const SportsNewsCard = ({ article }) => {
     status,
     premium,
   } = article;
+
+  const [sliderRef] = useKeenSlider({
+    loop: true,
+    mode: "free",
+    slides: { origin: "center", perView: 2.5, spacing: 10 },
+    range: {
+      min: -5,
+      max: 5,
+    },
+  });
   //   const handleDetails = async () => {
   //     const menuItem = {
   //       views: views + 1,
@@ -42,7 +52,7 @@ const SportsNewsCard = ({ article }) => {
   //   const limitedItems = article.slice(0, numberOfItemsToRender);
   return (
     <div>
-      <div className="keen-slider">
+      <div>
         <div>
           <div className="keen-slider__slide number-slide1 relative">
             <img
