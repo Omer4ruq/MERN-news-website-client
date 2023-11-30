@@ -10,6 +10,8 @@ import { Toast } from "flowbite-react";
 import { MdLoop } from "react-icons/md";
 import AllPublishers from "../components/AllPublishers";
 import SportsNews from "./SportsNews";
+import PoliticalNews from "./PoliticalNews";
+import MemberShipCard from "./MemberShipCard";
 const Home = () => {
   const [openModal, setOpenModal] = useState(false);
   useEffect(() => {
@@ -104,8 +106,14 @@ const Home = () => {
       <div className="mb-8">
         <AllPublishers></AllPublishers>
       </div>
-      <div>
+      <div className="mb-8">
         <SportsNews></SportsNews>
+      </div>
+      <div className="mb-8">
+        <PoliticalNews></PoliticalNews>
+      </div>
+      <div>
+        <MemberShipCard></MemberShipCard>
       </div>
     </div>
   );

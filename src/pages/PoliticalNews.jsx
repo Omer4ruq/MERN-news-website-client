@@ -3,8 +3,9 @@ import useArticles from "../hooks/useArticles";
 import SportsNewsCard from "./SportsNewsCard";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
+import PoliticalNewsCard from "./PoliticalNewsCard";
 
-const SportsNews = () => {
+const PoliticalNews = () => {
   const [sliderRef] = useKeenSlider({
     loop: true,
     mode: "free",
@@ -21,18 +22,18 @@ const SportsNews = () => {
         <div className="flex">
           <h1 className="text-2xl font-semibold text-red-600">I</h1>
           <h1 className="mb-2 ml-2 text-2xl font-semibold text-start pt-0 ">
-            Sports News
+            Political News
           </h1>
         </div>
       </div>
 
       <div ref={sliderRef} className="keen-slider">
         {article.map((article) =>
-          article.category === "Sports News" ? (
-            <SportsNewsCard
+          article.category === "Political News" ? (
+            <PoliticalNewsCard
               key={article._id}
               article={article}
-            ></SportsNewsCard>
+            ></PoliticalNewsCard>
           ) : null
         )}
       </div>
@@ -40,4 +41,4 @@ const SportsNews = () => {
   );
 };
 
-export default SportsNews;
+export default PoliticalNews;
