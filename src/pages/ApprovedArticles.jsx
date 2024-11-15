@@ -113,10 +113,14 @@ const ApprovedArticles = () => {
       </InfiniteScroll> */}
       <div>
         {sortedArticles && (
-          <div className="grid grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2  pb-4">
             {sortedArticles.map((article) =>
               article.status === "approved" ? (
-                <NewsCard key={article._id} article={article}></NewsCard>
+                <NewsCard
+                  key={article._id}
+                  article={article}
+                  size={"full"}
+                ></NewsCard>
               ) : null
             )}
           </div>

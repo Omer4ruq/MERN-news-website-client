@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
-const NewsCard = ({ article }) => {
+const NewsCard = ({ article, size }) => {
   const axiosSecure = useAxiosSecure();
   const {
     articleTitle,
@@ -53,9 +53,9 @@ const NewsCard = ({ article }) => {
       className="flex flex-col justify-between "
       onClick={handleDetails}
     >
-      <div className="w-[240px]">
+      <div className={`w-[${size}]`}>
         {/* Adjusted image width to match the container */}
-        <img className="w-[240px] h-auto" src={image} alt={articleTitle} />
+        <img className={`w-[${size}] h-auto`} src={image} alt={articleTitle} />
         <h1 className=" text-base font-semibold text-start  hover:underline overflow-hidden text-black mt-2">
           {articleTitle}
         </h1>

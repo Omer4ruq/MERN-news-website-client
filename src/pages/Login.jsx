@@ -1,107 +1,88 @@
 import React, { useContext } from "react";
 import image from "../assets/image/signin.png";
 import logo from "../assets/image/logo.png";
-import { NavLink } from "react-router-dom";
-import { FaGoogle } from "react-icons/fa";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
-import { app } from "../firebase/firebase.config";
 import { AuthContext } from "../providers/AuthProviders";
 import SocialLogin from "../components/SocialLogin";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(e.currentTarget);
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
-    console.log(form);
+
     signIn(email, password)
       .then((result) => {
-        console.log(result);
         navigate(from);
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: "User Loggedin Succesfully",
+          title: "User Logged in Successfully",
           showConfirmButton: false,
           timer: 1500,
         });
       })
       .catch((error) => {
-        console.error("keya be" + error);
+        console.error(error);
       });
   };
+
   return (
-    <div className="grid grid-cols-2 bg-black h-full">
-      <div className=" mr-16">
-        <img src={logo} className="h-14 ml-48 mt-16" alt="" />
-        <h1 className="text-white text-4xl text-center font-semibold mt-7">
+    <div className="flex  h-auto bg-black">
+      {/* Left Section */}
+      <div className="flex flex-col items-center md:w-3/4 p-16 md:p-16">
+        <img src={logo} className="h-12 md:h-14 mb-6" alt="Logo" />
+        <h1 className="text-white text-2xl md:text-4xl font-semibold text-center mb-10">
           Sign in with your email
         </h1>
-        <div>
-          <form onSubmit={handleLogin} className="w-full max-w-sm ">
-            <div className="flex items-center  py-4">
-              <div className="ml-32 gap-8">
-                <input
-                  type="text"
-                  className="appearapy-5nce-none  bg-transparent w-full border-t-0 border-r-0 border-l-0 border-b-2 border-teal-500 text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none mb-4"
-                  placeholder="Email"
-                  name="email"
-                  aria-label="Full name"
-                />
-                <input
-                  type="password"
-                  className="appearance-none bg-transparent  w-full border-t-0 border-r-0 border-l-0 border-b-2 border-teal-500 text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none mb-4"
-                  placeholder="Password"
-                  name="password"
-                  aria-label="Full name"
-                />
-
-                {/* <button
-                className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
-                type="button"
-              >
-                Sign Up
-              </button>
-              <button
-                className="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded"
-                type="button"
-              >
-                Cancel
-              </button> */}
-              </div>
-            </div>
-            <button
-              type="submit"
-              className="bg-blue-500 
-         hover:bg-blue-700 text-white font-bold py-2 px-4 rounded h-10 w-72 mt-1 ml-28"
-            >
-              Sign in
-            </button>
-            <SocialLogin></SocialLogin>
-          </form>
-          <div>
-            {" "}
-            <h1 className="text-white text-2xl font-bold">
-              Don’t have a BBC account?
-            </h1>
-            <NavLink to="/signup">
-              <h2 className="underline text-blue-600 mr-6">Registration</h2>
-            </NavLink>
-          </div>
+        <form
+          onSubmit={handleLogin}
+          className="w-full max-w-xs md:max-w-sm mx-auto space-y-4"
+        >
+          <input
+            type="text"
+            name="email"
+            placeholder="Email"
+            className="appearance-none bg-transparent  w-full border-t-0 border-r-0 border-l-0 border-b-2 border-teal-500 text-white mr-3 py-1 px-2 leading-tight focus:outline-none mb-4"
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            className="appearance-none bg-transparent  w-full border-t-0 border-r-0 border-l-0 border-b-2 border-teal-500 text-white mr-3 py-1 px-2 leading-tight focus:outline-none mb-4"
+          />
+          <button
+            type="submit"
+            className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 "
+          >
+            Sign in
+          </button>
+          <SocialLogin />
+        </form>
+        <div className="text-center mt-6">
+          <h2 className="text-white text-lg md:text-xl font-bold">
+            Don’t have a BBC account?
+          </h2>
+          <NavLink to="/signup" className="underline text-blue-500">
+            Registration
+          </NavLink>
         </div>
       </div>
-      <div className="ml-32">
-        <img src={image} className="h-screen" alt="" />
+
+      {/* Right Section */}
+      <div className="hidden md:flex items-center justify-center">
+        <img
+          src={image}
+          className="h-auto w-auto p-4 object-cover"
+          alt="Sign In Illustration"
+        />
       </div>
     </div>
   );

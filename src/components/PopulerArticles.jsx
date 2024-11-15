@@ -60,7 +60,7 @@ const PopulerArticles = () => {
         >
           {/* News Cards */}
           {limitedItems.map((item, index) => (
-            <NewsCard key={index} article={item} />
+            <NewsCard key={index} article={item} size={"240px"} />
           ))}
         </div>
 

@@ -4,11 +4,11 @@ import "./subNavbar.css";
 
 const SubNavbar = () => {
   return (
-    <div className="sticky top-0 z-20 bg-white">
-      <div className="nav ">
+    <div className="sticky top-0 z-20 bg-white ">
+      <div className="nav">
         <div className="">
-          <div className="flex justify-center ">
-            <ul className="flex space-x-2 md:space-x-2 text-xs  font-sans font-normal md:font-semibold ">
+          <div className="flex justify-center px-4 md:px-8">
+            <ul className="flex flex-wrap gap-0 justify-center text-sm sm:text-sm md:font-semibold">
               <NavLink
                 to="/"
                 className={({ isActive }) =>
@@ -19,7 +19,7 @@ const SubNavbar = () => {
                   }`
                 }
               >
-                <li className="flex gap-2 p-2">Home</li>
+                <li className="flex p-2">Home</li>
                 {/* <div className="bg-gray-600 mx-[2px] h-4 w-[0.5px] font-"></div> */}
               </NavLink>
 
@@ -124,7 +124,7 @@ const SubNavbar = () => {
             </ul>
           </div>
         </div>
-        <hr className="mt-2 border-gray-300 " />
+        <hr className="mt-0 border-gray-300 " />
       </div>
     </div>
   );

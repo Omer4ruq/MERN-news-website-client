@@ -105,7 +105,7 @@ const AddArticles = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="container flex flex-col mx-auto space-y-12 "
         >
-          <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-gray-900 pl-44">
+          <fieldset className="grid grid-cols-4 gap-6 p-2 md:p-6 rounded-md shadow-sm bg-gray-900 md:pl-44">
             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
               <div className="col-span-full sm:col-span-3">
                 <label className="text-sm">Article Title</label>
@@ -283,7 +283,7 @@ const AddArticles = () => {
                   options={options}
                 /> */}
               </div>
-              <div className="col-span-full sm:col-span-3 ml-8">
+              <div className="col-span-full sm:col-span-3 md:ml-8">
                 <label className="text-sm">News Category</label>
 
                 <select
@@ -308,7 +308,7 @@ const AddArticles = () => {
                   <option>Earth</option>
                 </select>
               </div>
-              <div className="col-span-full ml-8">
+              <div className="col-span-full md:ml-8">
                 <label className="text-sm">Sub Category</label>
 
                 <select
@@ -351,21 +351,21 @@ const AddArticles = () => {
                   <option>Australia</option>
                 </select>
               </div>
-              <div id="fileUpload" className="col-span-full text-gray-900">
-                <div className="mb-2 block text-gray-900">
+              <div id="fileUpload" className="col-span-full text-gray-100">
+                <div className="mb-2 block text-gray-100">
                   <Label htmlFor="file" value="Upload file" />
                 </div>
                 <FileInput
                   {...register("image", { required: true })}
                   id="file"
-                  helperText="A profile picture is useful to confirm your are logged into your account"
+                  helperText="Add a relevent picture"
                 />
               </div>
 
               <button
                 type="submit"
                 className="bg-blue-500 
-         hover:bg-blue-700 text-white font-bold py-2 px-4 rounded h-10 w-72 mt-1 ml-28"
+         hover:bg-blue-700 text-white font-bold py-2 px-4 rounded h-10 w-72 mt-1 ml-12 md:ml-28"
               >
                 Submit
               </button>

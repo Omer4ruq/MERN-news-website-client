@@ -22,12 +22,12 @@ const Navbar = () => {
   return (
     <div className="flex justify-between items-center text-white bg-black p-2 relative">
       {/* Logo and Navbar Toggle */}
-      <div className="flex items-center">
+      <NavLink to="/" className="flex items-center">
         <img src={logo} className="h-10 mr-2" alt="Logo" />
         <button className="lg:hidden text-white" onClick={toggleSidebar}>
           {sidebarOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
         </button>
-      </div>
+      </NavLink>
 
       {/* Desktop Navbar Links */}
       <div className="hidden lg:flex gap-4">
@@ -54,7 +54,7 @@ const Navbar = () => {
       </div>
 
       {/* User Avatar */}
-      <div className="hidden lg:flex items-center">
+      <div className=" lg:flex items-center">
         {user ? (
           <div className="flex items-center gap-2">
             <Dropdown
@@ -62,8 +62,9 @@ const Navbar = () => {
               inline
               label={<Avatar img={user.photoURL} rounded />}
             >
-              <Dropdown.Header>
+              <Dropdown.Header className="z-4000">
                 <span className="block text-sm">{user.displayName}</span>
+                <span className="block text-sm">My Articles</span>
                 <span className="block truncate text-sm font-medium">
                   {user.email}
                 </span>

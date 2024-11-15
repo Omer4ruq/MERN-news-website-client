@@ -66,7 +66,11 @@ const SportsNews = () => {
           {/* News Cards */}
           {article.map((article) =>
             article.category === "Sports News" ? (
-              <NewsCard key={article._id} article={article}></NewsCard>
+              <NewsCard
+                key={article._id}
+                article={article}
+                size={"240px"}
+              ></NewsCard>
             ) : null
           )}
         </div>

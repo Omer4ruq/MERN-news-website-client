@@ -48,7 +48,7 @@ const SocialLogin = () => {
     <div>
       <button
         onClick={handleGoogleSignIn}
-        className="flex items-center justify-center gap-3 bg-slate-700 text-white p-3 rounded-lg h-10 w-72 mt-1 ml-28 uppercase hover:opacity-95"
+        className="flex items-center justify-center gap-3 bg-slate-700 text-white p-3  h-10 w-full mt-1  uppercase hover:opacity-95"
       >
         <FaGoogle></FaGoogle> continue with google
       </button>
