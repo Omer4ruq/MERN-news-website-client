@@ -44,7 +44,7 @@ const MyArticles = () => {
   };
   return (
     <div>
-      <div>
+      <div className="mx-auto p-20">
         <div className="flex">
           <div className=" mx-40 sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-fit py-2 sm:px-6 lg:px-2">

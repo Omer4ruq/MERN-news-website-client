@@ -1,3 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Share+Tech+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&family=Share+Tech+Mono&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "BBC Reith Sans";
+  src: url("./fonts/bbcreith_v2.300/BBCReithSans_V2.300/Web/WOFF2/BBCReithSans_W_Rg.woff2")
+      format("woff2"),
+    url("./fonts/bbcreith_v2.300/BBCReithSans_V2.300/Web/WOFF/BBCReithSans_W_BdIt.woff")
+      format("woff"),
+    url("./fonts/bbcreith_v2.300/BBCReithSans_V2.300/Web/EOT/BBCReithSans_W_ExBd.eot")
+      format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}

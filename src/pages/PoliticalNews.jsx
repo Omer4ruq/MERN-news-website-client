@@ -4,6 +4,7 @@ import SportsNewsCard from "./SportsNewsCard";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import PoliticalNewsCard from "./PoliticalNewsCard";
+import BlackSection from "../components/BlackSection";
 
 const PoliticalNews = () => {
   const [sliderRef] = useKeenSlider({
@@ -18,25 +19,30 @@ const PoliticalNews = () => {
   const [article, , refetch] = useArticles();
   return (
     <div>
-      <div>
+      {/* <div>
         <div className="flex">
           <h1 className="text-2xl font-semibold text-red-600">I</h1>
           <h1 className="mb-2 ml-2 text-2xl font-semibold text-start pt-0 ">
             Political News
           </h1>
         </div>
+      </div> */}
+      <div>
+        <BlackSection
+          key={article._id}
+          title={"Trending Political News"}
+          article={article}
+          category={"Political News"}
+        ></BlackSection>
       </div>
 
-      <div ref={sliderRef} className="keen-slider">
+      {/* <div ref={sliderRef} className="keen-slider">
         {article.map((article) =>
           article.category === "Political News" ? (
-            <PoliticalNewsCard
-              key={article._id}
-              article={article}
-            ></PoliticalNewsCard>
+            <BlackSection key={article._id} article={article}></BlackSection>
           ) : null
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -17,6 +17,12 @@ import Details from "../pages/Details";
 import Payment from "../pages/payment/Payment";
 import Subscribtion from "../pages/Subscribtion";
 import MyProfile from "../pages/MyProfile";
+import MainSportsPage from "../pages/sports/mainSportsPage";
+import HomeSportsPage from "../pages/sports/HomeSportsPage";
+import Football from "../pages/sports/Football";
+import LivePage from "../pages/LivePage";
+import Cricket from "../pages/sports/Cricket";
+import NBA from "../pages/sports/NBA";
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +60,10 @@ export const router = createBrowserRouter([
       {
         path: "/my-profile",
         element: <MyProfile></MyProfile>,
+      },
+      {
+        path: "/live",
+        element: <LivePage></LivePage>,
       },
       {
         path: "/add-articles",
@@ -100,6 +110,28 @@ export const router = createBrowserRouter([
       {
         path: "article",
         element: <AllArticles></AllArticles>,
+      },
+    ],
+  },
+  {
+    path: "/",
+    element: <MainSportsPage></MainSportsPage>,
+    children: [
+      {
+        path: "all-sports",
+        element: <HomeSportsPage></HomeSportsPage>,
+      },
+      {
+        path: "football",
+        element: <Football></Football>,
+      },
+      {
+        path: "cricket",
+        element: <Cricket></Cricket>,
+      },
+      {
+        path: "nba",
+        element: <NBA></NBA>,
       },
     ],
   },

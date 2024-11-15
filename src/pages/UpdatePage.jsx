@@ -1,6 +1,74 @@
 import React from "react";
+import React, { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
+("use client");
+
+import { FileInput, Label } from "flowbite-react";
+import Swal from "sweetalert2";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProviders";
+import moment from "moment";
+
+import Select from "react-select";
+
+const options = [
+  { value: "chocolate", label: "Chocolate" },
+  { value: "strawberry", label: "Strawberry" },
+  { value: "vanilla", label: "Vanilla" },
+];
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const UpdatePage = () => {
+  const isAdmin = true;
+  const { user } = useContext(AuthContext);
+  const publishersList = useLoaderData();
+  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
+  const [selectedOption, setSelectedOption] = useState(null);
+  const { register, handleSubmit, setValue } = useForm();
+  const onSubmit = async (data) => {
+    console.log(data);
+    const imageFile = { image: data.image[0] };
+    const res = await axiosPublic.post(image_hosting_api, imageFile, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+
+    if (res.data.success) {
+      const articleItem = {
+        publisherName: data.publisherName,
+        status: data.status,
+        category: data.category,
+        articleTitle: data.articleTitle,
+        date: data.date,
+        email: data.email,
+        name: data.name,
+        authorImage: data.authorImage,
+        tags: data.tags,
+        description: data.description,
+        image: res.data.data.display_url,
+        views: 0,
+        premium: null,
+      };
+      const articleRes = await axiosSecure.post("/article", articleItem);
+      console.log(articleRes.data);
+      if (articleRes.data.insertedId) {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Artical Added Succesfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    }
+    console.log(res.data);
+  };
   return (
     <div>
       <div>

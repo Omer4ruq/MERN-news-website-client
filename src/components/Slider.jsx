@@ -2,7 +2,7 @@ import React from "react";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 
-const animation = { duration: 12000, easing: (t) => t };
+const animation = { duration: 32000, easing: (t) => t };
 
 const Slider = () => {
   const [sliderRef] = useKeenSlider({
@@ -20,7 +20,7 @@ const Slider = () => {
     },
   });
   return (
-    <div>
+    <div className="gap-0">
       <div ref={sliderRef} className="keen-slider">
         <div className="keen-slider__slide number-slide1">
           <img

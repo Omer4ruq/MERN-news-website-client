@@ -1,75 +1,70 @@
-import React from "react";
-import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import useArticles from "../hooks/useArticles";
+import NewsCard from "./NewsCard";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef } from "react";
 
 const PopulerArticles = () => {
-  const [article, , refetch] = useArticles();
+  const [article] = useArticles();
 
-  function compareByView(a, b) {
-    return b.views - a.views;
-  }
-  const populer = article.sort(compareByView);
-  console.log(populer);
-
-  const [sliderRef] = useKeenSlider({
-    loop: true,
-    mode: "free",
-    slides: { origin: "center", perView: 2.5, spacing: 10 },
-    range: {
-      min: -5,
-      max: 5,
-    },
-  });
-
+  // Sort articles by views
+  const populer = article.sort((a, b) => b.views - a.views);
   const numberOfItemsToRender = 6;
   const limitedItems = populer.slice(0, numberOfItemsToRender);
-  return (
-    <div>
-      {/* <div className="flex border-red-700  border-l-4 border-t-0 border-r-0 border-b-0"> */}
-      <div className="flex">
-        <h1 className="text-2xl font-semibold text-red-600">I</h1>
-        <h1 className="mb-2 ml-2 text-2xl font-semibold text-start pt-0 ">
-          Trending News
-        </h1>
-      </div>
-      <div ref={sliderRef} className="keen-slider">
-        {limitedItems.map((populer) => (
-          <div key={populer._id}>
-            <div className="keen-slider__slide number-slide1 relative">
-              <img
-                className="w-96 h-48 bg-gradient-to-b from-black to-transparent"
-                src={populer.image}
-              />
-              <div className="">
-                <h1 className="absolute text-x font-semibold text-center  text-white -mt-20">
-                  {populer.articleTitle}
-                </h1>
-              </div>
-            </div>
-          </div>
-        ))}
 
-        {/* <div className="keen-slider__slide number-slide2">
-          <img />
-          <h1 className=" text-4xl text-center text-white -mt-10">Pizza</h1>
+  const slideRef = useRef(null);
+
+  const scrollLeft = () => {
+    slideRef.current?.scrollBy({
+      left: -slideRef.current.offsetWidth,
+      behavior: "smooth",
+    });
+  };
+
+  const scrollRight = () => {
+    slideRef.current?.scrollBy({
+      left: slideRef.current.offsetWidth,
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <div className="relative pt-0 p-4 sm:p-6 md:p-8 lg:pt-10">
+      {/* Section title */}
+      <div className="flex justify-between">
+        <div className="flex items-center mb-4">
+          <h1 className="text-2xl font-semibold text-red-600">I</h1>
+          <h1 className="ml-2 text-2xl font-semibold">Trending News</h1>
         </div>
-        <div className="keen-slider__slide number-slide3">
-          <img />
-          <h1 className=" text-4xl text-center text-white -mt-10">Soups</h1>
+        <div className="flex">
+          <button
+            className=" top-1/2 transform  left-5 flex items-center hover:bg-black justify-center w-10 h-10   bg-opacity-50 hover:bg-opacity-75 text-black z-10"
+            onClick={scrollLeft}
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <button
+            className=" top-1/2 transform  right-5 flex items-center hover:bg-black justify-center w-10 h-10   bg-opacity-50 hover:bg-opacity-75 text-black z-10"
+            onClick={scrollRight}
+          >
+            <ChevronRight size={24} />
+          </button>
         </div>
-        <div className="keen-slider__slide number-slide4">
-          <img />
-          <h1 className=" text-4xl text-center text-white -mt-10">Desserts</h1>
+      </div>
+
+      {/* Slider Container */}
+      <div className="text-white relative">
+        <div
+          className="flex  justify-between overflow-x-scroll scrollbar-hide gap-5"
+          ref={slideRef}
+        >
+          {/* News Cards */}
+          {limitedItems.map((item, index) => (
+            <NewsCard key={index} article={item} />
+          ))}
         </div>
-        <div className="keen-slider__slide number-slide5">
-          <img />
-          <h1 className=" text-4xl text-center text-white -mt-10">Salads</h1>
-        </div>
-        <div className="keen-slider__slide number-slide6">
-          <img />
-          <h1 className=" text-4xl text-center text-white -mt-10">Salads</h1>
-        </div> */}
+
+        {/* Navigation Buttons */}
       </div>
     </div>
   );

@@ -1,173 +1,137 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import logo from "../assets/image/logo.png";
-import { FaHome, FaUser } from "react-icons/fa";
+import { FaHome, FaUser, FaBars, FaTimes } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProviders";
-("use client");
-
 import { Avatar, Dropdown } from "flowbite-react";
 import useAdmin from "../hooks/useAdmin";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  // const isAdmin = true;
   const [isAdmin] = useAdmin();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   const handleSignOut = () => {
     logOut().then().catch();
   };
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
   return (
-    <div className="flex text-white  bg-black">
-      <div className="flex ">
-        <img src={logo} className="h-10" alt="" />
+    <div className="flex justify-between items-center text-white bg-black p-2 relative">
+      {/* Logo and Navbar Toggle */}
+      <div className="flex items-center">
+        <img src={logo} className="h-10 mr-2" alt="Logo" />
+        <button className="lg:hidden text-white" onClick={toggleSidebar}>
+          {sidebarOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+        </button>
+      </div>
+
+      {/* Desktop Navbar Links */}
+      <div className="hidden lg:flex gap-4">
+        <NavLink to="/" className="hover:underline">
+          Home
+        </NavLink>
+        <NavLink to="/add-articles" className="hover:underline">
+          Add Articles
+        </NavLink>
+        <NavLink to="/approved-articles" className="hover:underline">
+          All Articles
+        </NavLink>
+        {isAdmin && (
+          <NavLink to="/dashboard" className="hover:underline">
+            Dashboard
+          </NavLink>
+        )}
+        <NavLink to="/my-articles" className="hover:underline">
+          My Articles
+        </NavLink>
+        <NavLink to="/subscribtion" className="hover:underline">
+          Subscription
+        </NavLink>
+      </div>
+
+      {/* User Avatar */}
+      <div className="hidden lg:flex items-center">
         {user ? (
-          <div className="flex text-white">
-            <div className="flex gap-4">
-              <NavLink to="/my-profile">
-                {" "}
-                <Dropdown
-                  arrowIcon={false}
-                  inline
-                  label={
-                    <Avatar alt="User settings" img={user.photoURL} rounded />
-                  }
-                >
-                  {" "}
-                </Dropdown>
-              </NavLink>
-              <button>
-                <h1 onClick={handleSignOut} className="text-sm font-semibold">
-                  Sign Out
-                </h1>
-              </button>
-
-              {/* <Dropdown.Header>
-                  <span className="block text-sm">{user.displayName}</span>
-                  <span className="block truncate text-sm font-medium">
-                    {user.email}
-                  </span>
-                </Dropdown.Header> */}
-              {/* <NavLink to="/dashboard/news">
-                  {" "}
-                  <Dropdown.Item>Dashboard</Dropdown.Item>
-                </NavLink>
-
-                <Dropdown.Item>Settings</Dropdown.Item>
-                <Dropdown.Item>Earnings</Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item onClick={handleSignOut}>Sign out</Dropdown.Item> */}
-            </div>
+          <div className="flex items-center gap-2">
+            <Dropdown
+              arrowIcon={false}
+              inline
+              label={<Avatar img={user.photoURL} rounded />}
+            >
+              <Dropdown.Header>
+                <span className="block text-sm">{user.displayName}</span>
+                <span className="block truncate text-sm font-medium">
+                  {user.email}
+                </span>
+              </Dropdown.Header>
+              <Dropdown.Item onClick={handleSignOut}>Sign Out</Dropdown.Item>
+            </Dropdown>
           </div>
         ) : (
-          <NavLink to="/login">
-            {" "}
-            <button className="flex  text-white mt-2 gap-2 ml-4 border-spacing-4 hover:underline underline-offset-8">
-              <FaUser className=" text-2xl"></FaUser>
-              <h1 className="text-sm font-semibold">Sign In</h1>
-            </button>
+          <NavLink to="/login" className="flex items-center gap-2">
+            <FaUser /> Sign In
           </NavLink>
         )}
       </div>
-      {isAdmin ? (
-        <div className=" vertical-align: middle; text-white flex  items-center gap-2 md:gap-8 text-[10px] md:text-[15px] font-normal cursor-pointer  ml-2 md:ml-16">
-          <NavLink className="hover:underline underline-offset-8" to="/">
-            <div className="flex ">
-              <h2 className="hidden md:block text-white">Home</h2>
-            </div>
-          </NavLink>
-          <NavLink
-            className="hover:underline underline-offset-8"
-            to="/add-articles"
-          >
-            <div className="flex ">
-              <h2 className="hidden md:block text-white">Add Articles</h2>
-            </div>
-          </NavLink>
-          <NavLink
-            className="hover:underline underline-offset-8"
-            to="/approved-articles"
-          >
-            <div className="flex ">
-              <h2 className="hidden md:block text-white">All Articles</h2>
-            </div>
-          </NavLink>
-          <NavLink
-            className="hover:underline underline-offset-8"
-            to="/dashboard"
-          >
-            <div className="flex gap-2">
-              <h2 className="hidden md:block text-white">Dashboard</h2>
-            </div>
-          </NavLink>{" "}
-          <NavLink
-            className="hover:underline underline-offset-8"
-            to="/my-articles"
-          >
-            <div className="flex gap-2">
-              <h2 className="hidden md:block text-white">My Articals</h2>
-            </div>
-          </NavLink>
-          <NavLink className="hover:underline underline-offset-8" to="/">
-            <div className="flex gap-2">
-              <h2 className="hidden md:block text-white">Premium Articles</h2>
-            </div>
-          </NavLink>
-          <NavLink
-            className="hover:underline underline-offset-8"
-            to="/subscribtion"
-          >
-            <div className="flex gap-2">
-              <h2 className="hidden md:block text-white">Subscribtion</h2>
-            </div>
-          </NavLink>
-        </div>
-      ) : (
-        <div className=" vertical-align: middle; text-white flex  items-center gap-2 md:gap-8 text-[10px] md:text-[15px] font-normal cursor-pointer  ml-2 md:ml-16">
-          <NavLink className="hover:underline underline-offset-8" to="/">
-            <div className="flex ">
-              <h2 className="hidden md:block text-white">Home</h2>
-            </div>
-          </NavLink>
-          <NavLink
-            className="hover:underline underline-offset-8"
-            to="/add-articles"
-          >
-            <div className="flex ">
-              <h2 className="hidden md:block text-white">Add Articles</h2>
-            </div>
-          </NavLink>
-          <NavLink
-            className="hover:underline underline-offset-8"
-            to="/approved-articles"
-          >
-            <div className="flex ">
-              <h2 className="hidden md:block text-white">All Articles</h2>
-            </div>
-          </NavLink>{" "}
-          <NavLink
-            className="hover:underline underline-offset-8"
-            to="/my-articles"
-          >
-            <div className="flex gap-2">
-              <h2 className="hidden md:block text-white">My Articals</h2>
-            </div>
-          </NavLink>
-          <NavLink className="hover:underline underline-offset-8" to="/">
-            <div className="flex gap-2">
-              <h2 className="hidden md:block text-white">Premium Articles</h2>
-            </div>
-          </NavLink>
-          <NavLink
-            className="hover:underline underline-offset-8"
-            to="/subscribtion"
-          >
-            <div className="flex gap-2">
-              <h2 className="hidden md:block text-white">Subscribtion</h2>
-            </div>
-          </NavLink>
-        </div>
-      )}
 
-      <div></div>
+      {/* Mobile Sidebar */}
+      <div
+        className={`fixed top-0 left-0 h-full w-64 bg-black text-white transition-transform transform ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } lg:hidden z-50 overflow-y-auto`}
+      >
+        <div className="flex justify-end p-4">
+          <button onClick={toggleSidebar} className="text-white">
+            <FaTimes size={24} />
+          </button>
+        </div>
+        <div className="flex flex-col gap-4 p-4">
+          <NavLink to="/" onClick={toggleSidebar} className="hover:underline">
+            Home
+          </NavLink>
+          <NavLink
+            to="/add-articles"
+            onClick={toggleSidebar}
+            className="hover:underline"
+          >
+            Add Articles
+          </NavLink>
+          <NavLink
+            to="/approved-articles"
+            onClick={toggleSidebar}
+            className="hover:underline"
+          >
+            All Articles
+          </NavLink>
+          {isAdmin && (
+            <NavLink
+              to="/dashboard"
+              onClick={toggleSidebar}
+              className="hover:underline"
+            >
+              Dashboard
+            </NavLink>
+          )}
+          <NavLink
+            to="/my-articles"
+            onClick={toggleSidebar}
+            className="hover:underline"
+          >
+            My Articles
+          </NavLink>
+          <NavLink
+            to="/subscribtion"
+            onClick={toggleSidebar}
+            className="hover:underline"
+          >
+            Subscription
+          </NavLink>
+        </div>
+      </div>
     </div>
   );
 };

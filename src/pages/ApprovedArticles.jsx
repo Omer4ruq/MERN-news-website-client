@@ -7,6 +7,7 @@ import { FaSearch } from "react-icons/fa";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import InfiniteScroll from "react-infinite-scroll-component";
+import NewsCard from "../components/NewsCard";
 
 // const getArticles = async ({ pageParam = 0 }) => {
 //   const res = await fetch(
@@ -18,6 +19,12 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 const ApprovedArticles = () => {
   const [articles, , refetch] = useArticles();
+
+  const sortedArticles = articles
+    ? [...articles].sort(
+        (a, b) => new Date(b.postingDate) - new Date(a.postingDate)
+      )
+    : [];
 
   // const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
   //   queryKey: ["articles"],
@@ -66,7 +73,7 @@ const ApprovedArticles = () => {
 
     //   }
     //   </div>
-    <div>
+    <div className="p-4">
       <div className="flex justify-between">
         <div className="w-[1200px]">
           <PageTitle
@@ -105,14 +112,11 @@ const ApprovedArticles = () => {
       
       </InfiniteScroll> */}
       <div>
-        {articles && (
+        {sortedArticles && (
           <div className="grid grid-cols-4 gap-3">
-            {articles.map((article) =>
+            {sortedArticles.map((article) =>
               article.status === "approved" ? (
-                <ApprovedArticlesCard
-                  key={article._id}
-                  article={article}
-                ></ApprovedArticlesCard>
+                <NewsCard key={article._id} article={article}></NewsCard>
               ) : null
             )}
           </div>

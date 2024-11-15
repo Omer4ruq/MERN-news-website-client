@@ -30,26 +30,24 @@ const ApprovedArticlesCard = ({ article }) => {
   return (
     <div>
       {status === "approved" && premium === "premium" ? (
-        <Card className="bg-red-600 hover:scale-70 transition-all duration-300 ease-in-out cursor-pointer">
+        <Card className="bg-orange-400 hover:scale-70 transition-all duration-300 ease-in-out cursor-pointer">
           <div>
             <img className="w-[500px] h-32" src={image} alt="" />
           </div>
           <h5 className="text-sm h-10 font-bold tracking-tight text-black dark:text-white">
-            {articleTitle}
+            {articleTitle.length > 50
+              ? `${articleTitle.slice(0, 49)}...`
+              : articleTitle}
           </h5>
-          <p className="font-medium text-sm  text-gray-700 dark:text-gray-400">
-            {/* Here are you will find the best car washer in you Area. Who are the
-          very much professiolas. And Authorized by our field mambers. */}
-            <div
-              className="flex gap-2 ml-4
-          "
-            >
-              {/* <FaTag className="w-8"></FaTag> */}
-              <div className="mt-4 text-xs text-white"> {publisherName}</div>
-            </div>
-          </p>
+          <div className="font-medium text-xs text-center  text-gray-700 dark:text-gray-400">
+            {" "}
+            <h1 className="">{publisherName}</h1>
+          </div>
           <NavLink to={`/subscribtion`}>
-            <button className="bg-slate-600 w-20" onClick={handleDetails}>
+            <button
+              className="bg-black rounded-md w-20 text-slate-50"
+              onClick={handleDetails}
+            >
               Details
             </button>
           </NavLink>
@@ -60,22 +58,23 @@ const ApprovedArticlesCard = ({ article }) => {
             <div>
               <img className="w-[500px] h-32" src={image} alt="" />
             </div>
-            <h5 className="text-sm h-10 font-bold tracking-tight text-gray-900 dark:text-white">
-              {articleTitle}
+            <h5 className="text-sm h-10 font-bold tracking-tight text-black dark:text-white">
+              {articleTitle.length > 50
+                ? `${articleTitle.slice(0, 49)}...`
+                : articleTitle}
             </h5>
-            <p className="font-medium text-sm  text-gray-700 dark:text-gray-400">
-              {/* Here are you will find the best car washer in you Area. Who are the
-        very much professiolas. And Authorized by our field mambers. */}
-              <div
-                className="flex gap-2 ml-4
-        "
-              >
-                {/* <FaTag className="w-8"></FaTag> */}
-                <div className="mt-4 text-xs"> {publisherName}</div>
-              </div>
-            </p>
+
+            {/* <FaTag className="w-8"></FaTag> */}
+            <div className="font-medium text-xs text-center  text-gray-700 dark:text-gray-400">
+              {" "}
+              <h1 className="">{publisherName}</h1>
+            </div>
+
             <NavLink to={`/details-news/${_id}`}>
-              <button className="bg-slate-600" onClick={handleDetails}>
+              <button
+                className="bg-black rounded-md w-20 text-slate-50"
+                onClick={handleDetails}
+              >
                 Details
               </button>
             </NavLink>

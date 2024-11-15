@@ -12,6 +12,12 @@ import AllPublishers from "../components/AllPublishers";
 import SportsNews from "./SportsNews";
 import PoliticalNews from "./PoliticalNews";
 import MemberShipCard from "./MemberShipCard";
+import LatestNews from "../components/LatestNews";
+import Advertise from "../components/Advertise";
+import EntertainmentNews from "./EntertainmentNews";
+import TopicsSection from "../components/TopicsSection";
+import ScienceAndHealth from "../components/ScienceAndHealth";
+import BusinessLatest from "../components/BusinessLatest";
 const Home = () => {
   const [openModal, setOpenModal] = useState(false);
   useEffect(() => {
@@ -58,7 +64,7 @@ const Home = () => {
                 </Button>
               </Modal.Footer>
             </Modal> */}
-              <Toast>
+              {/* <Toast>
                 <div className="flex items-start">
                   <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-cyan-100 text-cyan-500 dark:bg-cyan-900 dark:text-cyan-300">
                     <MdLoop className="h-5 w-5" />
@@ -85,14 +91,20 @@ const Home = () => {
                   </div>
                   <Toast.Toggle />
                 </div>
-              </Toast>
+              </Toast> */}
             </div>
           </div>
         )}
       </div>
-      <div className="mb-8">
+      <div className="mb-0">
         {" "}
-        <Slider></Slider>
+        {/* <Slider></Slider> */}
+        <LatestNews></LatestNews>
+      </div>
+      <div className="mb-8">
+        <Advertise
+          img={"https://tpc.googlesyndication.com/simgad/10601448054393647434"}
+        ></Advertise>
       </div>
 
       <div className="mb-8">
@@ -101,10 +113,10 @@ const Home = () => {
       </div>
       <div className="mb-8">
         {" "}
-        <AnnounceSection></AnnounceSection>
+        <EntertainmentNews></EntertainmentNews>
       </div>
       <div className="mb-8">
-        <AllPublishers></AllPublishers>
+        <AnnounceSection></AnnounceSection>
       </div>
       <div className="mb-8">
         <SportsNews></SportsNews>
@@ -112,9 +124,19 @@ const Home = () => {
       <div className="mb-8">
         <PoliticalNews></PoliticalNews>
       </div>
-      <div className="mb-8">
-        <MemberShipCard></MemberShipCard>
+      <div className="">
+        <Advertise
+          img={"https://tpc.googlesyndication.com/simgad/8113241438753359776"}
+        ></Advertise>
       </div>
+      <div>
+        {" "}
+        <ScienceAndHealth></ScienceAndHealth>
+      </div>
+      <div>
+        <BusinessLatest></BusinessLatest>
+      </div>
+      <div className="mb-8">{/* <MemberShipCard></MemberShipCard> */}</div>
     </div>
   );
 };
