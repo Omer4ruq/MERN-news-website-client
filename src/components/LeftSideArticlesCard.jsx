@@ -1,6 +1,21 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const LeftSideArticlesCard = ({ article }) => {
+  const {
+    articleTitle,
+    image,
+    category,
+    date,
+    email,
+    name,
+    description,
+    authorImage,
+    _id,
+    views,
+    status,
+    premium,
+  } = article;
   function timeAgo(date) {
     const currentDate = new Date();
     const postDate = new Date(date);
@@ -21,33 +36,44 @@ const LeftSideArticlesCard = ({ article }) => {
       return `${diffHours} hour${diffHours > 1 ? "s" : ""} ago`;
     }
   }
+  const handleDetails = async () => {
+    const menuItem = {
+      views: views + 1,
+    };
+    const menuRes = await axiosSecure.patch(`/articleViews/${_id}`, menuItem);
+    console.log(menuItem);
+  };
 
   return (
-    <div className="w-full  flex  md:flex-wrap mb-3">
+    <NavLink
+      to={`/details-news/${_id}`}
+      onClick={handleDetails}
+      className="w-full h-auto  flex md:flex-wrap mb-3"
+    >
       <img
-        className="w-full h-[100px]  md:h-auto"
-        src={article.image}
-        alt={article.articleTitle}
+        className="w-[120px] h-[90px]  md:h-auto"
+        src={image}
+        alt={articleTitle}
       />
       <div className="ml-3 md:ml-0">
-        <h1 className="text-sm md:text-base font-semibold text-start font-noto  md:mt-2 text-black">
-          {article.articleTitle}
+        <h1 className="text-sm md:text-base font-semibold text-start font-noto  md:mt-2 text-black hover:underline">
+          {articleTitle}
         </h1>
         <h1 className=" text-[rgb(32,34,36)] hidden md:block font-sans font-normal text-[14px] leading-[18px] tracking-[0px] text-start">
-          {article.description}
+          {description}
         </h1>
         <div className="md:mt-2 h-8 flex items-center gap-2">
           <div className="font-sans text-[12px] leading-[14px] tracking-[-0.12px] text-gray-600">
-            {timeAgo(article.date)}
+            {timeAgo(date)}
           </div>
           <div className="bg-gray-600 mx-[2px] h-4 w-[1px]"></div>
           <div className="font-sans text-[12px] leading-[14px] tracking-[-0.12px] text-gray-600">
-            {article.category}
+            {category}
           </div>
         </div>
         <hr className="mt-2 h-8 flex items-center gap-2" />
       </div>
-    </div>
+    </NavLink>
   );
 };
 

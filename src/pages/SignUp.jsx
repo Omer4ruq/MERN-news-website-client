@@ -8,6 +8,7 @@ import { app } from "../firebase/firebase.config";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { AuthContext } from "../providers/AuthProviders";
 import SocialLogin from "../components/SocialLogin";
+import { FaWindowClose } from "react-icons/fa";
 
 const SignUp = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -104,6 +105,12 @@ const SignUp = () => {
       {/* Right Section */}
       <div className=" hidden md:flex items-center justify-center md:w-1/2 p-6">
         <img src={image} className="w-full h-auto  object-cover" alt="Signup" />
+
+        <div className="text-white absolute -mt-[550px] ml-[300px] text-4xl">
+          <NavLink to="/">
+            <FaWindowClose />
+          </NavLink>
+        </div>
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../providers/AuthProviders";
 import SocialLogin from "../components/SocialLogin";
+import { FaWindowClose } from "react-icons/fa";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
@@ -83,6 +84,11 @@ const Login = () => {
           className="h-auto w-auto p-4 object-cover"
           alt="Sign In Illustration"
         />
+        <div className="text-white absolute -mt-[600px] ml-[300px] text-4xl">
+          <NavLink to="/">
+            <FaWindowClose />
+          </NavLink>
+        </div>
       </div>
     </div>
   );

@@ -23,6 +23,12 @@ import Football from "../pages/sports/Football";
 import LivePage from "../pages/LivePage";
 import Cricket from "../pages/sports/Cricket";
 import NBA from "../pages/sports/NBA";
+import BusinessPage from "../pages/business/BusinessPage";
+import Innovation from "../pages/Innovation/Innovation";
+import Culture from "../pages/culture/Culture";
+import Arts from "../pages/arts/Arts";
+import Travel from "../pages/travel/Travel";
+import Earth from "../pages/earth/Earth";
 
 export const router = createBrowserRouter([
   {
@@ -60,6 +66,30 @@ export const router = createBrowserRouter([
       {
         path: "/my-profile",
         element: <MyProfile></MyProfile>,
+      },
+      {
+        path: "/business",
+        element: <BusinessPage></BusinessPage>,
+      },
+      {
+        path: "/innovation",
+        element: <Innovation></Innovation>,
+      },
+      {
+        path: "/culture",
+        element: <Culture></Culture>,
+      },
+      {
+        path: "/arts",
+        element: <Arts></Arts>,
+      },
+      {
+        path: "/travel",
+        element: <Travel></Travel>,
+      },
+      {
+        path: "/earth",
+        element: <Earth></Earth>,
       },
       {
         path: "/live",

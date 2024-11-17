@@ -6,6 +6,7 @@ import LeftSideArticlesCard from "./LeftSideArticlesCard";
 import { FaRegDotCircle } from "react-icons/fa";
 import RightSideArticleSide from "./RightSideArticleSide";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion"; // Import Framer Motion
 
 const LatestNews = () => {
   const [article, refetch] = useArticles();
@@ -21,7 +22,21 @@ const LatestNews = () => {
     .filter((item) => item.category === "War")
     .slice(0, 3);
   const latestArticles = sortedByDate.slice(0, 4);
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3, // Delays between children animations
+      },
+    },
+  };
 
+  // Animation variants for individual items
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
   return (
     <div>
       {/* <div className="flex overflow-hidden">
@@ -36,9 +51,9 @@ const LatestNews = () => {
           {latestArticles.map((article) =>
             article.liveStatus === "yes" ? (
               <Link to="live" key={article._id} className="hover:underline">
-                <div className="w-[400px] md:w-full">
+                <div className="w-full">
                   <img
-                    className="w-[400px] md:w-full h-auto md:h-[300px] bg-gradient-to-b from-black to-transparent"
+                    className="w-full h-auto md:h-[300px] bg-gradient-to-b from-black to-transparent"
                     src={article.image}
                     alt={article.articleTitle}
                   />
@@ -92,15 +107,20 @@ const LatestNews = () => {
           ))}
         </section>
 
-        <section className="hidden md:block md:col-span-1">
-          {/* for laptop screen */}
+        {/* Left Side Articles */}
+        <motion.section
+          className="hidden md:block md:col-span-1"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {leftSideArticle.map((article) => (
-            <LeftSideArticlesCard
-              key={article._id}
-              article={article}
-            ></LeftSideArticlesCard>
+            <motion.div key={article._id} variants={itemVariants}>
+              <LeftSideArticlesCard article={article} />
+            </motion.div>
           ))}
-        </section>
+        </motion.section>
+
         <section className="md:col-span-2 hidden md:block ">
           {/* for laptop screen */}
           {latestArticles.map((article) =>
@@ -152,14 +172,18 @@ const LatestNews = () => {
             ) : null
           )}
         </section>
-        <section className="md:col-span-1 -mt-1">
+        <motion.section
+          className="md:col-span-1 -mt-1"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {rightSideArticle.map((article) => (
-            <RightSideArticleSide
-              key={article._id}
-              article={article}
-            ></RightSideArticleSide>
+            <motion.div key={article._id} variants={itemVariants}>
+              <RightSideArticleSide article={article} />
+            </motion.div>
           ))}
-        </section>
+        </motion.section>
       </div>
     </div>
   );

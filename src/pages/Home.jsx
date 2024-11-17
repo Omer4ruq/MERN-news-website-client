@@ -18,6 +18,8 @@ import EntertainmentNews from "./EntertainmentNews";
 import TopicsSection from "../components/TopicsSection";
 import ScienceAndHealth from "../components/ScienceAndHealth";
 import BusinessLatest from "../components/BusinessLatest";
+import OtherSectionCard from "../components/OtherSectionCard";
+import OtherNewsSection from "../components/OtherNewsSection";
 const Home = () => {
   const [openModal, setOpenModal] = useState(false);
   useEffect(() => {
@@ -135,6 +137,9 @@ const Home = () => {
       </div>
       <div>
         <BusinessLatest></BusinessLatest>
+      </div>
+      <div>
+        <OtherNewsSection></OtherNewsSection>
       </div>
       <div className="mb-8">{/* <MemberShipCard></MemberShipCard> */}</div>
     </div>

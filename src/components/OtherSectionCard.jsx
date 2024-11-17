@@ -1,29 +1,6 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 
-const RightSideArticleSide = ({ article }) => {
-  const {
-    articleTitle,
-    image,
-    category,
-    date,
-    email,
-    name,
-    description,
-    authorImage,
-    _id,
-    views,
-    status,
-    premium,
-  } = article;
-  const handleDetails = async () => {
-    const menuItem = {
-      views: views + 1,
-    };
-    const menuRes = await axiosSecure.patch(`/articleViews/${_id}`, menuItem);
-    console.log(menuItem);
-  };
-
+const OtherSectionCard = ({ article }) => {
   function timeAgo(date) {
     const currentDate = new Date();
     const postDate = new Date(date);
@@ -46,32 +23,32 @@ const RightSideArticleSide = ({ article }) => {
   }
 
   return (
-    <NavLink to={`/details-news/${_id}`} onClick={handleDetails}>
-      <div className="w-[260px]">
+    <div>
+      <div className="w-full md:w-[260px]">
         {/* <img
           className="w-[260px] s"
           src={article.image}
           alt={article.articleTitle}
         /> */}
-        <h1 className=" text-base font-semibold text-start font-noto overflow-hidden hover:underline">
+        <h1 className=" text-sm font-semibold text-start font-noto overflow-hidden">
           {article.articleTitle}
         </h1>
-        <h1 className=" text-[rgb(32,34,36)] font-sans font-normal text-[14px] leading-[18px] tracking-[0px] text-start">
+        {/* <h1 className=" text-[rgb(32,34,36)] font-sans font-normal text-[14px] leading-[18px] tracking-[0px] text-start">
           {article.description}
-        </h1>
+        </h1> */}
         <div className="mt-2 h-8 flex items-center gap-2">
-          <div className="font-sans text-[12px] leading-[14px] tracking-[-0.12px] text-gray-600">
+          <div className="font-sans text-[10px] md:text-[12px] md:leading-[14px] md:tracking-[-0.12px] text-gray-600">
             {timeAgo(article.date)}
           </div>
           <div className="bg-gray-600 mx-[2px] h-4 w-[1px]"></div>
-          <div className="font-sans text-[12px] leading-[14px] tracking-[-0.12px] text-gray-600">
+          <div className="font-sans text-[10px] md:text-[12px] md:leading-[14px] md:tracking-[-0.12px] text-gray-600">
             {article.category}
           </div>
         </div>
         <hr className="mt-2 h-8 flex items-center gap-2" />
       </div>
-    </NavLink>
+    </div>
   );
 };
 
-export default RightSideArticleSide;
+export default OtherSectionCard;

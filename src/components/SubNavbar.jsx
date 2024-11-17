@@ -5,10 +5,10 @@ import "./subNavbar.css";
 const SubNavbar = () => {
   return (
     <div className="sticky top-0 z-20 bg-white ">
-      <div className="nav">
+      <div className="nav ">
         <div className="">
-          <div className="flex justify-center px-4 md:px-8">
-            <ul className="flex flex-wrap gap-0 justify-center text-sm sm:text-sm md:font-semibold">
+          <div className="flex justify-center px-2 md:px-8">
+            <ul className="flex flex-wrap gap-0 justify-center text-sm md::text-xs font-sans md:font-semibold">
               <NavLink
                 to="/"
                 className={({ isActive }) =>
@@ -50,7 +50,7 @@ const SubNavbar = () => {
               </NavLink>
 
               <NavLink
-                to="/contact"
+                to="/business"
                 className={({ isActive }) =>
                   `flex gap-2 ${
                     isActive
@@ -62,7 +62,7 @@ const SubNavbar = () => {
                 <li className="flex gap-2 p-2">Business</li>
               </NavLink>
               <NavLink
-                to="/contact"
+                to="/innovation"
                 className={({ isActive }) =>
                   `flex gap-2 ${
                     isActive
@@ -74,7 +74,7 @@ const SubNavbar = () => {
                 <li className="flex gap-2 p-2">Innovation</li>
               </NavLink>
               <NavLink
-                to="/contact"
+                to="/culture"
                 className={({ isActive }) =>
                   `flex gap-2 ${
                     isActive
@@ -86,7 +86,7 @@ const SubNavbar = () => {
                 <li className="flex gap-2 p-2">Culture</li>
               </NavLink>
               <NavLink
-                to="/contact"
+                to="/arts"
                 className={({ isActive }) =>
                   `flex gap-2 ${
                     isActive
@@ -98,7 +98,7 @@ const SubNavbar = () => {
                 <li className="flex gap-2 p-2">Arts</li>
               </NavLink>
               <NavLink
-                to="/contact"
+                to="/travel"
                 className={({ isActive }) =>
                   `flex gap-2 ${
                     isActive
@@ -110,7 +110,7 @@ const SubNavbar = () => {
                 <li className="flex gap-2 p-2">Travel</li>
               </NavLink>
               <NavLink
-                to="/contact"
+                to="/earth"
                 className={({ isActive }) =>
                   `flex gap-2 ${
                     isActive

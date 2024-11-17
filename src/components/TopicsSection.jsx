@@ -36,8 +36,8 @@ const TopicsSection = ({ article }) => {
         </h1>
         <ChevronRight></ChevronRight>
       </div>
-      <div className="md:flex p-5">
-        <div className="text-start my-auto p-12">
+      <div className="md:flex p-1 md:p-5">
+        <div className="text-start my-auto p-4 md:p-12">
           <h1 className="text-start text-lg font-bold font-noto pb-3 hover:underline">
             {articleTitle}
           </h1>
