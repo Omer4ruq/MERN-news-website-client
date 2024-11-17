@@ -4,8 +4,9 @@ import "./subNavbar.css";
 
 const SubNavbar = () => {
   return (
-    <div className="sticky top-0 z-20 bg-white ">
+    <div className="sticky top-0 z-10 bg-white ">
       <div className="nav ">
+        <hr className="mt-0 border-gray-300 " />
         <div className="">
           <div className="flex justify-center px-2 md:px-8">
             <ul className="flex flex-wrap gap-0 justify-center text-sm md::text-xs font-sans md:font-semibold">

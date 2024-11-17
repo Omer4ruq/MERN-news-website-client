@@ -45,7 +45,7 @@ const LatestNews = () => {
           Latest News
         </h1>
       </div> */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 p-4 md:p-6">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 p-2 md:p-6">
         {/* for mobile screen */}
         <section className="col-span-2 block md:hidden ">
           {latestArticles.map((article) =>

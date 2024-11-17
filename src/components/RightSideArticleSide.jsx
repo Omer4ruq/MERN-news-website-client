@@ -47,7 +47,7 @@ const RightSideArticleSide = ({ article }) => {
 
   return (
     <NavLink to={`/details-news/${_id}`} onClick={handleDetails}>
-      <div className="w-[260px]">
+      <div className="sm:w-[280px] md:w-[260px] lg:[260px]">
         {/* <img
           className="w-[260px] s"
           src={article.image}

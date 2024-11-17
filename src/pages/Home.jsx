@@ -20,6 +20,7 @@ import ScienceAndHealth from "../components/ScienceAndHealth";
 import BusinessLatest from "../components/BusinessLatest";
 import OtherSectionCard from "../components/OtherSectionCard";
 import OtherNewsSection from "../components/OtherNewsSection";
+import SliderNews from "../components/SliderNews";
 const Home = () => {
   const [openModal, setOpenModal] = useState(false);
   useEffect(() => {
@@ -130,6 +131,9 @@ const Home = () => {
         <Advertise
           img={"https://tpc.googlesyndication.com/simgad/8113241438753359776"}
         ></Advertise>
+      </div>
+      <div>
+        <SliderNews></SliderNews>
       </div>
       <div>
         {" "}
