@@ -9,6 +9,7 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 import { AuthContext } from "../providers/AuthProviders";
 import SocialLogin from "../components/SocialLogin";
 import { FaWindowClose } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const SignUp = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -55,6 +56,10 @@ const SignUp = () => {
 
   return (
     <div className="flex  bg-black h-auto ">
+      <Helmet>
+        <title>BBC Register</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       {/* Left Section */}
       <div className="flex flex-col items-center md:w-3/4  p-8 md:p-8">
         <img src={logo} className="h-14 mb-4" alt="Logo" />

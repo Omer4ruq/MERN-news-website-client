@@ -1,6 +1,15 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import useArticles from "../hooks/useArticles";
+import AnnounceSectionCard from "./AnnounceSectionCard";
 
 const AnnounceSection = () => {
+  const [article] = useArticles();
+
+  const announcement = article.filter(
+    (item) => item.articleTitle === "Nigella's Amsterdam Christmas"
+  );
+
   return (
     <div className=" min-h-fit  ">
       <div></div>
@@ -22,10 +31,13 @@ const AnnounceSection = () => {
           />
 
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-l from-transparent via-red-600  to-red-600 ">
-            <div className="absolute top-1/2 left-1/12 transform -translate-y-1/2  font-bold z-10">
-              <h3 className="text-2xl font-robotoSlab font-semibold sm:text-6xl pl-0 md:pl-4 w-2/4 md:w-3/4 hover:underline group-focus:underline">
-                Nigella’s Amsterdam Christmas
-              </h3>
+            <div className="absolute top-1/2 left-1/12 transform -translate-y-1/2  font-bold ">
+              {announcement.map((article, index) => (
+                <AnnounceSectionCard
+                  key={index}
+                  article={article}
+                ></AnnounceSectionCard>
+              ))}
             </div>
           </div>
         </div>

@@ -21,6 +21,7 @@ import BusinessLatest from "../components/BusinessLatest";
 import OtherSectionCard from "../components/OtherSectionCard";
 import OtherNewsSection from "../components/OtherNewsSection";
 import SliderNews from "../components/SliderNews";
+import { Helmet } from "react-helmet-async";
 const Home = () => {
   const [openModal, setOpenModal] = useState(false);
   useEffect(() => {
@@ -34,6 +35,10 @@ const Home = () => {
   }, []);
   return (
     <div>
+      <Helmet>
+        <title>BBC Home</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <div>
         {openModal && (
           <div className="modal">

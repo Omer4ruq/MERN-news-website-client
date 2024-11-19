@@ -34,7 +34,7 @@ const SportsNews = () => {
   };
   const [article, , refetch] = useArticles();
   return (
-    <div className="relative pt-0 p-4 sm:p-6 md:p-8 lg:pt-10">
+    <div className="relative pt-0 p-2 sm:p-6 md:p-8 lg:pt-10">
       {/* Section title */}
       <div className="flex justify-between">
         <div className="flex items-center mb-4">

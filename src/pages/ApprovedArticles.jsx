@@ -8,6 +8,7 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import InfiniteScroll from "react-infinite-scroll-component";
 import NewsCard from "../components/NewsCard";
+import { Helmet } from "react-helmet-async";
 
 // const getArticles = async ({ pageParam = 0 }) => {
 //   const res = await fetch(
@@ -74,6 +75,10 @@ const ApprovedArticles = () => {
     //   }
     //   </div>
     <div className="p-4">
+      <Helmet>
+        <title>BBC All News</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <div className="flex justify-between">
         <div className="w-[1200px]">
           <PageTitle

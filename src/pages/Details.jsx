@@ -6,6 +6,11 @@ import BlackSection from "../components/BlackSection";
 import { MdAdd } from "react-icons/md";
 import { IoIosAdd } from "react-icons/io";
 import { FaShareAlt } from "react-icons/fa";
+import { Dropdown } from "flowbite-react";
+import { FaFacebookF } from "react-icons/fa6";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaInstagramSquare } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 
 const Details = () => {
   const article = useLoaderData();
@@ -27,7 +32,27 @@ const Details = () => {
               <div className="flex space-x-3 ">
                 <div className="flex items-center  text-black gap-1">
                   <h2 className="text-black font-semibold cursor-pointer">
-                    Share
+                    <Dropdown
+                      className="font-normal"
+                      arrowIcon={false}
+                      inline
+                      label={"Share"}
+                    >
+                      <Dropdown.Header className="z-4000 space-y-3">
+                        <span className=" text-sm flex gap-2 items-center  hover:underline">
+                          <FaFacebookF /> Facebook
+                        </span>
+                        <span className=" text-sm flex gap-2 items-center hover:underline">
+                          <FaSquareXTwitter /> X (Twitter)
+                        </span>
+                        <span className=" text-sm flex gap-2 items-center hover:underline">
+                          <FaInstagramSquare /> Instagram
+                        </span>
+                        <span className=" text-sm flex gap-2 items-center hover:underline">
+                          <FaLinkedin /> Linkedin
+                        </span>
+                      </Dropdown.Header>
+                    </Dropdown>
                   </h2>
                   <div>
                     <FaShareAlt className="text-black  font-extrabold" />

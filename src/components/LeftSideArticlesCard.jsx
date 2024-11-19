@@ -51,7 +51,7 @@ const LeftSideArticlesCard = ({ article }) => {
       className="w-full h-auto  flex md:flex-wrap mb-3"
     >
       <img
-        className="w-[120px] h-[90px]  md:h-auto"
+        className="sm:w-[120px] md:w-full lg:w-full h-[90px]  md:h-auto"
         src={image}
         alt={articleTitle}
       />
@@ -62,7 +62,7 @@ const LeftSideArticlesCard = ({ article }) => {
         <h1 className=" text-[rgb(32,34,36)] hidden md:block font-sans font-normal text-[14px] leading-[18px] tracking-[0px] text-start">
           {description}
         </h1>
-        <div className="md:mt-2 h-8 flex items-center gap-2">
+        <div className="md:mt-2 h-8 flex items-center gap-1 md:gap-2">
           <div className="font-sans text-[12px] leading-[14px] tracking-[-0.12px] text-gray-600">
             {timeAgo(date)}
           </div>

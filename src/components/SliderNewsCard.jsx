@@ -49,7 +49,11 @@ const SliderNewsCard = ({ article }) => {
   return (
     <div>
       <div className=" pt-8 ">
-        <img src={image} alt="" className="w-[600px] h-[300px]" />
+        <img
+          src={image}
+          alt=""
+          className="w-[200px] md:w-[600px] h-[140px] md:h-[350px]"
+        />
         <div className="text-start my-auto mt-6">
           <h1 className="text-start text-lg font-bold font-noto pb-3 hover:underline">
             {articleTitle}

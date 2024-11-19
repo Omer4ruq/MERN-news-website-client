@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../providers/AuthProviders";
 import SocialLogin from "../components/SocialLogin";
 import { FaWindowClose } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
@@ -37,6 +38,10 @@ const Login = () => {
 
   return (
     <div className="flex  h-auto bg-black">
+      <Helmet>
+        <title>BBC Login</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       {/* Left Section */}
       <div className="flex flex-col items-center md:w-3/4 p-16 md:p-16">
         <img src={logo} className="h-12 md:h-14 mb-6" alt="Logo" />

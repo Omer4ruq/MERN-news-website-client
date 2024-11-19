@@ -27,7 +27,7 @@ const TopicsSection = ({ article }) => {
     console.log(menuItem);
   };
   return (
-    <div className="p-4 md:p-8">
+    <div className="p-2 md:p-8">
       {/* Border line */}
       <div className="mx-0 border-0 h-[2px] w-full bg-[rgb(58,60,62)] mb-4"></div>
       <div className="flex items-center">

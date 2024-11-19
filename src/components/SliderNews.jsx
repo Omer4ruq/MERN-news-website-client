@@ -16,7 +16,7 @@ const SliderNews = () => {
   const war = articles.filter((item) => item.category === "War").slice(0, 2);
 
   return (
-    <div className="p-4 md:p-8">
+    <div className="p-2 md:p-8">
       <div className="mx-0 border-0 h-[2px] w-full bg-[rgb(58,60,62)] mb-4"></div>
       <div className="flex items-center">
         <h1 className="text-[rgb(32,34,36)] text-sm font-bold font-noto">

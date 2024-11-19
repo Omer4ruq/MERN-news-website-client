@@ -9,7 +9,7 @@ const OtherSectionCard = ({ article }) => {
     const diffHours = Math.floor(diffTime / (1000 * 60 * 60));
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
     const diffWeeks = Math.floor(diffDays / 7);
-    const diffMonths = Math.floor(diffDays / 30); // Approximate month
+    const diffMonths = Math.floor(diffDays / 30);
 
     if (diffMonths >= 1) {
       return `${diffMonths} month${diffMonths > 1 ? "s" : ""} ago`;
