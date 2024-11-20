@@ -34,6 +34,7 @@
     "react-icons": "^4.12.0",
     "react-infinite-scroll-component": "^6.1.0",
     "react-notifications-component": "^4.0.1",
+    "react-resizable": "^3.0.5",
     "react-router-dom": "^6.20.0",
     "react-select": "^5.8.2",
     "rsuite-table": "^5.18.1",
