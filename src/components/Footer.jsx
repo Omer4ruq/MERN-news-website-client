@@ -18,38 +18,38 @@ const Footer = () => {
             <NavLink to="/">
               <h1 className="font-sans font-semibold hover:underline ">Home</h1>
             </NavLink>
-            <NavLink to="/">
+            <NavLink to="/approved-articles">
               <h1 className="font-sans font-semibold hover:underline">News</h1>
             </NavLink>
-            <NavLink to="/">
+            <NavLink to="/all-sports">
               <h1 className="font-sans font-semibold hover:underline">
                 Sports
               </h1>
             </NavLink>
-            <NavLink to="/">
+            <NavLink to="/business">
               <h1 className="font-sans font-semibold hover:underline">
                 Business
               </h1>
             </NavLink>
-            <NavLink to="/">
+            <NavLink to="/innovation">
               <h1 className="font-sans font-semibold hover:underline">
                 Innovation
               </h1>
             </NavLink>
-            <NavLink to="/">
+            <NavLink to="/culture">
               <h1 className="font-sans font-semibold hover:underline">
                 Culture
               </h1>
             </NavLink>
-            <NavLink to="/">
+            <NavLink to="/arts">
               <h1 className="font-sans font-semibold hover:underline">Arts</h1>
             </NavLink>
-            <NavLink to="/">
+            <NavLink to="/travel">
               <h1 className="font-sans font-semibold hover:underline">
                 Travel
               </h1>
             </NavLink>
-            <NavLink to="/">
+            <NavLink to="/earth">
               <h1 className="font-sans font-semibold hover:underline">Earth</h1>
             </NavLink>
             <NavLink to="/">

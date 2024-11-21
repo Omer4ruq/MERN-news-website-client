@@ -22,6 +22,8 @@ import OtherSectionCard from "../components/OtherSectionCard";
 import OtherNewsSection from "../components/OtherNewsSection";
 import SliderNews from "../components/SliderNews";
 import { Helmet } from "react-helmet-async";
+import ResizeComponent from "../components/ResizeComponent";
+import ResizeComponentbar from "../components/ResizeComponentbar";
 const Home = () => {
   const [openModal, setOpenModal] = useState(false);
   useEffect(() => {
@@ -149,6 +151,9 @@ const Home = () => {
       </div>
       <div>
         <OtherNewsSection></OtherNewsSection>
+      </div>
+      <div>
+        <ResizeComponentbar></ResizeComponentbar>
       </div>
       <div className="mb-8">{/* <MemberShipCard></MemberShipCard> */}</div>
     </div>

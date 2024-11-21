@@ -7,14 +7,15 @@ import { AuthContext } from "../providers/AuthProviders";
 
 const MyArticles = () => {
   const { user } = useContext(AuthContext);
-  // const [article, , refetch] = useArticles();
   const [article, setArticle] = useState([]);
   const url = `https://newspaper-server-zeta.vercel.app/my-article?email=${user?.email}`;
+
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setArticle(data));
   }, []);
+
   const handleDeleteItem = (article) => {
     Swal.fire({
       title: "Are you sure?",
@@ -27,10 +28,8 @@ const MyArticles = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const res = await axiosSecure.delete(`/article/${article._id}`);
-        // console.log(res.data);
         if (res.data.deletedCount > 0) {
-          // refetch to update the ui
-          // refetch();
+          setArticle((prev) => prev.filter((item) => item._id !== article._id));
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -42,97 +41,59 @@ const MyArticles = () => {
       }
     });
   };
+
   return (
-    <div>
-      <div className="mx-auto p-20">
-        <div className="flex">
-          <div className=" mx-40 sm:-mx-6 lg:-mx-8">
-            <div className="inline-block min-w-fit py-2 sm:px-6 lg:px-2">
-              <div className="overflow-hidden">
-                <table className="min-w-fit text-center text-sm font-light ">
-                  <thead className="border-b font-medium border-neutral-500">
-                    <tr>
-                      <th scope="col" className="ml-1">
-                        #
-                      </th>
-
-                      <th scope="col" className=" ">
-                        Title
-                      </th>
-                      <th scope="col" className="">
-                        Author Email
-                      </th>
-                      <th scope="col" className="">
-                        Author Name
-                      </th>
-                      <th scope="col" className="">
-                        Status
-                      </th>
-
-                      <th scope="col" className="">
-                        Update
-                      </th>
-                      <th scope="col" className="">
-                        Delete
-                      </th>
-                    </tr>
-                  </thead>
-                  {article.map((article, index) => (
-                    <tbody key={article._id}>
-                      <tr className="border-b border-neutral-500 ">
-                        <td className="whitespace-nowrap  font-medium">
-                          {index + 1}
-                        </td>
-
-                        <td className="whitespace-nowrap w-8 px-2 py-4">
-                          <h1 className="text-xs font-bold">
-                            <div> {article.articleTitle}</div>
-
-                            <button
-                              // onClick={() => declineStatus(article)}
-
-                              type="button"
-                              className="w-20 py-1 font-semibold rounded bg-red-800 text-white"
-                            >
-                              Details
-                            </button>
-                          </h1>
-                        </td>
-                        <td className="whitespace-nowrap ">{article.email}</td>
-                        <td className="whitespace-nowrap ">{article.name}</td>
-                        <td className="whitespace-nowrap ">
-                          {article.status === "approved" ? (
-                            <div>
-                              {" "}
-                              <h1 className="font-semibold">
-                                {article.status}
-                              </h1>{" "}
-                              <div className="flex gap-2"></div>
-                            </div>
-                          ) : (
-                            <h1 className="font-semibold">{article.status}</h1>
-                          )}
-                        </td>
-                        <td className="whitespace-nowrap ">
-                          <FaEdit
-                            onClick={() => handleDeleteItem(article)}
-                            className="ml-4 text-2xl  text-red-600"
-                          ></FaEdit>
-                        </td>
-                        <td className="whitespace-nowrap ">
-                          <FaTrash
-                            onClick={() => handleDeleteItem(article)}
-                            className="ml-4 text-2xl  text-red-600"
-                          ></FaTrash>
-                        </td>
-                      </tr>
-                    </tbody>
-                  ))}
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div className="px-4 py-6 lg:px-20">
+      <h1 className="text-2xl font-bold text-center mb-6">My Articles</h1>
+      <div className="overflow-x-auto">
+        <table className="w-full text-sm text-center border border-gray-200 rounded-md">
+          <thead className="bg-gray-200 text-gray-700">
+            <tr>
+              <th className="p-3">#</th>
+              <th className="p-3">Title</th>
+              <th className="p-3">Author Email</th>
+              <th className="p-3">Author Name</th>
+              <th className="p-3">Status</th>
+              <th className="p-3">Update</th>
+              <th className="p-3">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {article.map((article, index) => (
+              <tr
+                key={article._id}
+                className={`${
+                  index % 2 === 0 ? "bg-gray-50" : "bg-white"
+                } border-b hover:bg-gray-100`}
+              >
+                <td className="p-3">{index + 1}</td>
+                <td className="p-3">
+                  <h1 className="font-medium">{article.articleTitle}</h1>
+                  <button className="mt-2 px-3 py-1 text-xs font-semibold bg-red-800 text-white rounded">
+                    Details
+                  </button>
+                </td>
+                <td className="p-3">{article.email}</td>
+                <td className="p-3">{article.name}</td>
+                <td className="p-3 font-semibold text-green-600">
+                  {article.status}
+                </td>
+                <td className="p-3">
+                  <FaEdit
+                    className="text-blue-500 text-xl cursor-pointer hover:text-blue-700"
+                    onClick={() => console.log("Edit functionality")}
+                  />
+                </td>
+                <td className="p-3">
+                  <FaTrash
+                    className="text-red-600 text-xl cursor-pointer hover:text-red-800"
+                    onClick={() => handleDeleteItem(article)}
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );

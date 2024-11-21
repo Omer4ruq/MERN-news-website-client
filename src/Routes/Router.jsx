@@ -29,6 +29,7 @@ import Culture from "../pages/culture/Culture";
 import Arts from "../pages/arts/Arts";
 import Travel from "../pages/travel/Travel";
 import Earth from "../pages/earth/Earth";
+import AdminHome from "../pages/dashboard/AdminHome";
 
 export const router = createBrowserRouter([
   {
@@ -122,6 +123,10 @@ export const router = createBrowserRouter([
     path: "dashboard",
     element: <Dashboard></Dashboard>,
     children: [
+      {
+        path: "/dashboard",
+        element: <AdminHome></AdminHome>,
+      },
       {
         path: "news",
         element: <News></News>,

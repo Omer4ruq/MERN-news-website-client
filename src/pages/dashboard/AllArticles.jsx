@@ -1,15 +1,11 @@
-import React from "react";
-("use client");
-import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { useQuery } from "@tanstack/react-query";
-import { Button, Checkbox, Label, Modal, TextInput } from "flowbite-react";
-import { useState } from "react";
-import { Table, Column, HeaderCell, Cell } from "rsuite-table";
-import useArticles from "../../hooks/useArticles";
-import Swal from "sweetalert2";
-import { FaCheck, FaSign, FaTrash } from "react-icons/fa";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
+import Swal from "sweetalert2";
+import { FaCheck, FaTrash } from "react-icons/fa";
+import { Modal, TextInput, Label } from "flowbite-react";
+import useArticles from "../../hooks/useArticles";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const AllArticles = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -25,10 +21,7 @@ const AllArticles = () => {
 
   const handleStatus = async (article) => {
     article.status = "approved";
-
-    const menuItem = {
-      status: article.status,
-    };
+    const menuItem = { status: article.status };
     const menuRes = await axiosSecure.patch(
       `/article/${article._id}`,
       menuItem
@@ -47,10 +40,7 @@ const AllArticles = () => {
 
   const handlePremium = async (article) => {
     article.premium = "premium";
-
-    const menuItem = {
-      premium: article.premium,
-    };
+    const menuItem = { premium: article.premium };
     const menuRes = await axiosSecure.patch(
       `/articlepremium/${article._id}`,
       menuItem
@@ -60,7 +50,7 @@ const AllArticles = () => {
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: `${article.name} is updated to the menu.`,
+        title: `${article.name} is updated to premium.`,
         showConfirmButton: false,
         timer: 1500,
       });
@@ -69,10 +59,7 @@ const AllArticles = () => {
 
   const declineStatus = async (article) => {
     article.status = `Decline. (${note})`;
-
-    const menuItem = {
-      status: article.status,
-    };
+    const menuItem = { status: article.status };
     const menuRes = await axiosSecure.patch(
       `/article/${article._id}`,
       menuItem
@@ -106,7 +93,7 @@ const AllArticles = () => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: `${article.name} has been deleted`,
+            title: `${article.name} has been deleted.`,
             showConfirmButton: false,
             timer: 1500,
           });
@@ -116,149 +103,114 @@ const AllArticles = () => {
   };
 
   return (
-    <div className="-ml-16 w-full">
+    <div className="container mx-auto ">
       <div>
-        <h1>{article.length}</h1>
-        <div className="flex">
-          <div className="mx-40 sm:-mx-6 lg:-mx-8">
-            <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-              <div className="overflow-hidden">
-                <table className="min-w-full text-center text-sm font-light">
-                  <thead className="border-b font-medium border-neutral-500">
-                    <tr>
-                      <th scope="col" className="ml-1">
-                        #
-                      </th>
-                      <th scope="col" className="ml-1">
-                        Author Photo
-                      </th>
-                      <th scope="col">Title</th>
-                      <th scope="col">Author Email</th>
-                      <th scope="col">Author Name</th>
-                      <th scope="col">Status</th>
-                      <th scope="col">Delete</th>
-                      <th scope="col">Premium</th>
-                    </tr>
-                  </thead>
-                  {sortedArticles.map((article, index) => (
-                    <tbody key={article._id}>
-                      <tr className="border-b border-neutral-500">
-                        <td className="whitespace-nowrap font-medium">
-                          {index + 1}
-                        </td>
-                        <td className="whitespace-nowrap ml-1">
-                          <img
-                            className="w-12 h-12"
-                            src={article.authorImage}
-                            alt="Author"
-                          />
-                        </td>
-                        <td className="whitespace-nowrap w-8 px-2 py-4">
-                          <h1 className="text-xs font-bold">
-                            {article.articleTitle}
-                          </h1>
-                        </td>
-                        <td className="whitespace-nowrap">{article.email}</td>
-                        <td className="whitespace-nowrap">{article.name}</td>
-                        <td className="whitespace-nowrap">
-                          <NavLink to={`/details-news/${article._id}`}>
-                            <button className="bg-black rounded-md w-20 text-slate-50">
-                              Details
-                            </button>
-                          </NavLink>
-                        </td>
-                        <td className="whitespace-nowrap">
-                          {article.status === "Pending" ? (
-                            <div>
-                              <h1 className="font-semibold">
-                                {article.status}
-                              </h1>
-                              <div className="flex gap-2">
-                                <button
-                                  onClick={() => handleStatus(article)}
-                                  type="button"
-                                  className="w-20 font-semibold rounded bg-gray-500 text-gray-50"
-                                >
-                                  Approve
-                                </button>
-                                <button
-                                  onClick={() => setOpenModal(true)}
-                                  type="button"
-                                  className="w-20 py-1 font-semibold rounded bg-red-800 text-white"
-                                >
-                                  Decline
-                                </button>
-                                <Modal
-                                  show={openModal}
-                                  size="md"
-                                  onClose={() => setOpenModal(false)}
-                                  popup
-                                >
-                                  <Modal.Header />
-                                  <Modal.Body>
-                                    <div className="space-y-6">
-                                      <h3 className="text-xl font-medium text-gray-900 dark:text-white">
-                                        Provide Feedback
-                                      </h3>
-                                      <div>
-                                        <Label
-                                          htmlFor="text"
-                                          value="Give feedback"
-                                        />
-                                        <TextInput
-                                          id="text"
-                                          placeholder="Write a note"
-                                          value={note}
-                                          onChange={(event) =>
-                                            setNote(event.target.value)
-                                          }
-                                          required
-                                        />
-                                      </div>
-                                      <div className="w-full">
-                                        <button
-                                          onClick={() => declineStatus(article)}
-                                          type="button"
-                                          className="w-20 font-semibold rounded bg-gray-500 text-black"
-                                        >
-                                          Decline
-                                        </button>
-                                      </div>
-                                    </div>
-                                  </Modal.Body>
-                                </Modal>
-                              </div>
+        <h1 className="text-center text-lg md:text-2xl font-semibold mb-4">
+          All Articles ({article.length})
+        </h1>
+        <div className="overflow-x-auto">
+          <table className="w-full text-center text-sm md:text-base">
+            <thead className="border-b bg-gray-100">
+              <tr>
+                <th className="p-2">#</th>
+                <th className="p-2">Author Photo</th>
+                <th className="p-2">Title</th>
+                <th className="p-2">Author Email</th>
+                <th className="p-2">Author Name</th>
+                <th className="p-2">Actions</th>
+                <th className="p-2">Delete</th>
+                <th className="p-2">Premium</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sortedArticles.map((article, index) => (
+                <tr key={article._id} className="border-b hover:bg-gray-50">
+                  <td className="p-2">{index + 1}</td>
+                  <td className="p-2">
+                    <img
+                      className="w-12 h-12 mx-auto rounded-full"
+                      src={article.authorImage}
+                      alt="Author"
+                    />
+                  </td>
+                  <td className="p-2 text-sm font-semibold">
+                    {article.articleTitle}
+                  </td>
+                  <td className="p-2 text-xs">{article.email}</td>
+                  <td className="p-2 text-xs">{article.name}</td>
+                  <td className="p-2 flex flex-col md:flex-row justify-center  items-center gap-2">
+                    <NavLink to={`/details-news/${article._id}`}>
+                      <button className="bg-black text-white text-sm px-2 py-1 ">
+                        Details
+                      </button>
+                    </NavLink>
+                    {article.status === "Pending" && (
+                      <>
+                        <button
+                          onClick={() => handleStatus(article)}
+                          className="bg-gray-500 text-white text-sm px-2 py-1 "
+                        >
+                          Approve
+                        </button>
+                        <button
+                          onClick={() => setOpenModal(true)}
+                          className="bg-red-800 text-white text-sm px-2 py-1 "
+                        >
+                          Decline
+                        </button>
+                        <Modal
+                          show={openModal}
+                          size="md"
+                          onClose={() => setOpenModal(false)}
+                          popup
+                        >
+                          <Modal.Header />
+                          <Modal.Body>
+                            <div className="space-y-6">
+                              <h3 className="text-xl font-medium">
+                                Provide Feedback
+                              </h3>
+                              <Label htmlFor="note" value="Feedback" />
+                              <TextInput
+                                id="note"
+                                placeholder="Write your feedback"
+                                value={note}
+                                onChange={(e) => setNote(e.target.value)}
+                              />
+                              <button
+                                onClick={() => declineStatus(article)}
+                                className="bg-gray-500 text-black rounded-md px-4 py-2"
+                              >
+                                Submit
+                              </button>
                             </div>
-                          ) : (
-                            <h1 className="font-semibold">{article.status}</h1>
-                          )}
-                        </td>
-                        <td className="whitespace-nowrap">
-                          <FaTrash
-                            onClick={() => handleDeleteItem(article)}
-                            className="ml-4 text-2xl text-red-600"
-                          />
-                        </td>
-                        <td className="whitespace-nowrap">
-                          {article.premium === "premium" ? (
-                            <FaCheck className="ml-5" />
-                          ) : (
-                            <button
-                              onClick={() => handlePremium(article)}
-                              type="button"
-                              className="w-20 font-semibold rounded bg-gray-500 text-gray-50"
-                            >
-                              Premium
-                            </button>
-                          )}
-                        </td>
-                      </tr>
-                    </tbody>
-                  ))}
-                </table>
-              </div>
-            </div>
-          </div>
+                          </Modal.Body>
+                        </Modal>
+                      </>
+                    )}
+                  </td>
+                  <td className="p-2">
+                    <FaTrash
+                      onClick={() => handleDeleteItem(article)}
+                      className="text-red-600 cursor-pointer mx-auto"
+                    />
+                  </td>
+                  <td className="p-2">
+                    {article.premium === "premium" ? (
+                      <FaCheck className="text-green-600" />
+                    ) : (
+                      <button
+                        onClick={() => handlePremium(article)}
+                        className="bg-gray-500 text-white text-sm px-2 py-1 "
+                      >
+                        Premium
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
