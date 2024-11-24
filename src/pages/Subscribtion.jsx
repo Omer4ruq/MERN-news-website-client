@@ -56,10 +56,10 @@ const Subscribtion = () => {
               action=""
               // onSubmit={handleSubmit(onSubmit)}
               onSubmit={handleSubmit(onSubmit)}
-              className="w-full max-w-sm "
+              className="w-full max-w-auto max-x-auto"
             >
-              <div className="flex items-center  py-4">
-                <div className="ml-32 gap-8">
+              <div className="flex items-center justify-center py-4">
+                <div className=" gap-8">
                   {/* <input
                     type="text"
                     className="appearapy-5nce-none  bg-transparent w-full border-t-0 border-r-0 border-l-0 border-b-2 border-teal-500 text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none mb-4"
@@ -68,8 +68,8 @@ const Subscribtion = () => {
                     aria-label="Full name"
                   /> */}
 
-                  <div className="col-span-full sm:col-span-3">
-                    <label className="text-sm">Publisher</label>
+                  <div className="col-span-full sm:col-span-3 ">
+                    <label className="text-sm">Trial Days</label>
                     <div>
                       {" "}
                       <select
@@ -78,8 +78,8 @@ const Subscribtion = () => {
                         {...register("premiumTaken")}
                         defaultValue={""}
                       >
-                        <option value="1">1</option>
-                        <option value="5">5</option>
+                        <option value="1">1 days</option>
+                        <option value="5">5 days</option>
                       </select>
                     </div>
                   </div>
@@ -88,7 +88,7 @@ const Subscribtion = () => {
               <button
                 type="submit"
                 className="bg-blue-500 
-         hover:bg-blue-700 text-white font-bold py-2 px-4 rounded h-10 w-72 mt-1 ml-28"
+         hover:bg-blue-700 text-white font-bold py-2 px-4 rounded h-10 w-72 mt-1 "
               >
                 Submit
               </button>

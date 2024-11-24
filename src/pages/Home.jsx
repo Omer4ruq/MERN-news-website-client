@@ -125,6 +125,9 @@ const Home = () => {
         {" "}
         <EntertainmentNews></EntertainmentNews>
       </div>
+      <div>
+        <SliderNews></SliderNews>
+      </div>
       <div className="mb-8">
         <AnnounceSection></AnnounceSection>
       </div>
@@ -139,9 +142,7 @@ const Home = () => {
           img={"https://tpc.googlesyndication.com/simgad/8113241438753359776"}
         ></Advertise>
       </div>
-      <div>
-        <SliderNews></SliderNews>
-      </div>
+
       <div>
         {" "}
         <ScienceAndHealth></ScienceAndHealth>
@@ -153,7 +154,7 @@ const Home = () => {
         <OtherNewsSection></OtherNewsSection>
       </div>
       <div>
-        <ResizeComponentbar></ResizeComponentbar>
+        {/* <ResizeComponentbar></ResizeComponentbar> */}
       </div>
       <div className="mb-8">{/* <MemberShipCard></MemberShipCard> */}</div>
     </div>
