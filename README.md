@@ -14,4 +14,4 @@ This is a a Newspaper website based on.. here are some key feature in this websi
 
 here is the Live link of the project given below:
 
-- [My Website Here](https://newspaper-client-7c002.web.app/)
+- [My Website Here](https://newsportal-demo.netlify.app/)
